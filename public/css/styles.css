@@ -1,0 +1,15 @@
+@import url('http://fonts.cdnfonts.com/css/nexa-bold');
+
+* {
+    box-sizing: border-box;
+    color: #4b4b4b;
+    font-family: 'Nexa', sans-serif;
+}
+
+header {
+    background-color: rgb(172, 172, 172);
+}
+
+footer {
+    background-color: rgb(184, 184, 184);
+}
