@@ -1,6 +1,42 @@
+<%- include('../template/head') -%>
 
-<%- include('../template/head')      -%>
+    <h1>Creador: <%= creador %>
+    </h1>
 
-<p>Creador</p>
+    <img src=<%=imagen %>>
+    <p>Sitio web:
+        <a href=<%=sitio %>>
+            <%= sitio %>
+        </a>
+    </p>
+    <p>Correo electrónico: <%= correo %>
+    </p>
+    <p>Teléfono: <%= telefono %>
+    </p>
+    </p>
+    <p>Calificación promedio: <%= calificacion %>
+    </p>
 
-<%- include('../template/footer')-%>
+    <table>
+        <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+        </tr>
+        <% for(var i=0; i < juegos.length; i++) { %>
+            <tr>
+                <td>
+                    <img src=<%=juegos[i].imagen %> height="100">
+                </td>
+                <td>
+                    <%= juegos[i].nombre %>
+                </td>
+
+                <td>
+                    <%= juegos[i].descripcion %>
+                </td>
+            </tr>
+            <% } %>
+    </table>
+
+    <%- include('../template/footer')-%>
