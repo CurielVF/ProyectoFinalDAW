@@ -1,6 +1,53 @@
+<%- include('../template/head') -%>
+    <main>
+        <h1>
+            <%= nombre %>
+        </h1>
 
-<%- include('../template/head')      -%>
+        <img src=<%=imagen %> class="imagen-creador">
+        <div class="datos-creador">
+            <p>
+                <span>Sitio web: </span>
+                <a href=<%=sitio %>>
+                    <%= sitio %>
+                </a>
+            </p>
+            <p>
+                <span>Correo electrónico: </span>
+                <%= correo %>
+            </p>
+            <p>
+                <span>Teléfono: </span>
+                <%= telefono %>
+            </p>
+            <p>
+                <span>Calificación: </span>0
+            </p>
+        </div>
 
-<p>Creador</p>
+        <h3>Juegos del creador:</h3>
+        <table class="juegos-creador">
+            <% for(var i=0; i < juegos.length; i++) { %>
+                <tr class="clickable-row">
+                    <td>
+                        <img src=<%=juegos[i].imagen %> class="imagen-juego">
+                        <div class="datos-juego">
+                            <div class="clasificacion-juego">
+                                <span>
+                                    <%= juegos[i].nombre %>
+                                </span>
+                                <p>Calificación: 5</p>
+                            </div>
 
-<%- include('../template/footer')-%>
+                            <%= juegos[i].descripcion %>
+                        </div>
+                    </td>
+                </tr>
+                <% } %>
+        </table>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="./js/clickable.js"></script>
+
+    <%- include('../template/footer')-%>
