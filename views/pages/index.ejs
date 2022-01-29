@@ -1,6 +1,51 @@
+<%- include('../template/head') -%>
+    <main>
+        <h1>Catálogo de juegos</h1>
+        <div class="herramientas-busqueda">
+            <div class="busqueda">
+                <input type="text" class="input-busqueda">
+                <a href="/">
+                    <img src="./img/lupa-busqueda.png" alt="buscar" class="boton-busqueda">
+                </a>
+            </div>
+            <div class="drop-orden">
+                <label>Ordenar por: </label>
+                <select>
+                    <option value="Nombre">Nombre</option>
+                    <option value="Creador">Creador</option>
+                    <option value="Calificacion">Calificación</option>
+                    <option value="Fecha">Fecha de lanzamiento</option>
+                </select>
+            </div>
+        </div>
 
-<%- include('../template/head')      -%>
+        <table class="juegos-creador">
+            <% for(var i=0; i < juegos.length; i++) { %>
+                <tr class="clickable-row">
+                    <td>
+                        <img src=<%=juegos[i].imagen %> class="imagen-juego">
+                        <div class="datos-juego">
+                            <div class="clasificacion-juego">
+                                <span>
+                                    <%= juegos[i].nombre %>
+                                </span>
+                                <p>Calificación: 5</p>
+                            </div>
+                            <p> Creador:
+                                <a href="/creador/<%= juegos[i].creador %>">
+                                    <%= juegos[i].creador %>
+                                </a>
+                            </p>
 
-<p>Index</p>
+                            <%= juegos[i].descripcion %>
+                        </div>
+                    </td>
+                </tr>
+                <% } %>
+        </table>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="./js/clickable.js"></script>
 
-<%- include('../template/footer')-%>
+    <%- include('../template/footer')-%>
