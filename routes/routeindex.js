@@ -15,6 +15,12 @@ router.get("/", async (req, res) => {
     res.render("pages/index", { juegos })
 })
 
+router.get('/agregarjuego',async (req,res)=>{
+    res.render('pages/agregarjuego')
+
+
+});
+
 //Ejemplo para añadir datos a base ----------------------------------
 router.get("/addDB", async (req, res) => {
     /*
