@@ -1,7 +1,7 @@
 
 <%- include('../template/head')      -%>
 
-<form>
+<form action="/add" method="post">
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputEmail4">Nombre</label>
@@ -37,14 +37,15 @@
                 <option>Estrategia</option>
                 <option>Simulacion</option>
                 <option>Otros</option>
+                
 
         </div>
         
-
+        
     </div>
 
     </div>
-    <button type="submit" class="btn btn-primary">Registrar</button>
+    
 </form>
 
 <%- include('../template/footer')-%>
