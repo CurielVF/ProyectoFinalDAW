@@ -29,11 +29,13 @@ mongoose.connect(process.env.MONGODB_HOST,{
 //Importar rutas
 const indexRoutes = require('./routes/routeindex');
 const creadorRoutes = require('./routes/routecreador');
+const juegoRoutes = require('./routes/routejuego');
 
 
 //Rutas
 app.use('/', indexRoutes);
 app.use('/creador', creadorRoutes);
+app.use('/juego', juegoRoutes);
 
 app.listen(app.get('port'), () =>{
     console.log(`server on port ${app.get('port')}`);
