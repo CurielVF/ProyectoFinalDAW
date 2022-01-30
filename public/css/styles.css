@@ -4,10 +4,16 @@
     box-sizing: border-box;
     color: #4b4b4b;
     font-family: 'Nexa', sans-serif;
+
+}
+
+html {
+    height: 100%;
 }
 
 header {
-    background-color: rgb(172, 172, 172);
+    background-color: #2C698D;
+
 }
 
 form {
@@ -17,12 +23,17 @@ form {
 }
 
 footer {
-    background-color: rgb(184, 184, 184);
+    background-color: #2C698D;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
 }
 
 main {
+    margin-top: 20px;
     margin-left: 5%;
     margin-right: 5%;
+    margin-bottom: 30px;
 }
 
 .imagen-creador {
@@ -67,12 +78,12 @@ h1, h2, h3 {
     display: flex;
 }
 
-.clasificacion-juego{
+.clasificacion-juego {
     display: flex;
     justify-content: space-between;
 }
 
-.datos-juego{
+.datos-juego {
     display: flex;
     flex-direction: column;
 }
@@ -122,4 +133,58 @@ h1, h2, h3 {
 .drop-orden select {
     height: 40px;
     font-size: large;
+}
+
+.menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background-color: #1e4861;
+    padding-right: 5%;
+}
+
+.menu a {
+    color: white;
+    margin: 10px;
+}
+
+#logo {
+    height: 5%;
+    width: 5%;
+    margin: 10px;
+}
+
+#nombre-pagina {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+
+}
+
+header a {
+    text-decoration: none;
+}
+
+#contenedor-nombre {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+#contenedor-equipo{
+    color: white;
+    justify-content: center;
+
+}
+#contenedor-equipo h5{
+    color: white;
+    justify-content: center;
+}
+
+footer a{
+    color: white;
+}
+
+footer li{
+    color: white;
 }

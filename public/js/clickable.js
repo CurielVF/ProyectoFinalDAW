@@ -5,7 +5,7 @@ $(".clickable-row").click(function () {
 $('.clickable-row').css('cursor', 'pointer');
 
 $(".clickable-row").hover(function () {
-    $(this).css("background-color", "rgb(204, 204, 204)");
+    $(this).css("background-color", "#b8dbf0");
 }, function () {
     $(this).css("background-color", "white");
 });

@@ -1,51 +1,52 @@
+<%- include('../template/head') -%>
+    <main>
+        <h1>Agregar juego</h1>
+        <form action="/add" method="post">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Nombre</label>
+                    <input type="email" class="form-control" id="inputNombre" placeholder="Nombre">
+                </div>
+                <div class="form-group">
+                    <label for="inputState">Fecha de creacion</label>
+                    <input type="date" name="fecha" min="2000-01-01" max="2022-03-01" />
+                </div>
 
-<%- include('../template/head')      -%>
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Clasificación</label>
+                <input type="text" class="form-control" id="inputClasificacion" placeholder="+18">
+            </div>
+            <div class="form-group">
+                <label for="inputAddress2">Descipción</label>
+                <input type="text" class="form-control" id="inputDescripcion" placeholder="Es un juego de.....">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputCity">Autor</label>
+                    <input type="text" class="form-control" id="inputCity">
+                </div>
+                <div class="form-group col-md-4">
 
-<form action="/add" method="post">
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="inputEmail4">Nombre</label>
-            <input type="email" class="form-control" id="inputNombre" placeholder="Nombre">
-        </div>
-        <div class="form-group">
-            <label for="inputState">Fecha de creacion</label>
-            <input type="date" name="fecha" min="2000-01-01" max="2022-03-01" />
-        </div>
+                    <label for="inputState">Categoria</label>
+                    <select id="inputState" class="form-control">
+                        <option selected>....</option>
+                        <option>Accion</option>
+                        <option>Arcade</option>
+                        <option>Deportivo</option>
+                        <option>Estrategia</option>
+                        <option>Simulacion</option>
+                        <option>Otros</option>
+                    </select>
+                    <div>
+                        <a href="/">
+                            <button type="button" class="btn btn-primary btn-sm">Agregar Juego</button>
+                        </a>
+                    </div>
 
-    </div>
-    <div class="form-group">
-        <label for="inputAddress">Clasificacion</label>
-        <input type="text" class="form-control" id="inputClasificacion" placeholder="+18">
-    </div>
-    <div class="form-group">
-        <label for="inputAddress2">Descipcion</label>
-        <input type="text" class="form-control" id="inputDescripcion" placeholder="Es un juego de.....">
-    </div>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="inputCity">Autor</label>
-            <input type="text" class="form-control" id="inputCity">
-        </div>
-        <div class="form-group col-md-4">
+                </div>
 
-            <label for="inputState">Categoria</label>
-            <select id="inputState" class="form-control">
-                <option selected>....</option>
-                <option>Accion</option>
-                <option>Arcade</option>
-                <option>Deportivo</option>
-                <option>Estrategia</option>
-                <option>Simulacion</option>
-                <option>Otros</option>
-                
 
-        </div>
-        
-        
-    </div>
-
-    </div>
-    
-</form>
-
-<%- include('../template/footer')-%>
+        </form>
+    </main>
+    <%- include('../template/footer')-%>

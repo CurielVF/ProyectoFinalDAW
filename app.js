@@ -30,12 +30,20 @@ mongoose.connect(process.env.MONGODB_HOST,{
 const indexRoutes = require('./routes/routeindex');
 const creadorRoutes = require('./routes/routecreador');
 const juegoRoutes = require('./routes/routejuego');
+const agregarJuegoRoutes = require('./routes/routeagregarjuego');
+const perfilRoutes = require('./routes/routeperfil');
+const acercaDeRoutes = require('./routes/routeacercade');
+const loginRoutes = require('./routes/routelogin');
 
 
 //Rutas
 app.use('/', indexRoutes);
 app.use('/creador', creadorRoutes);
 app.use('/juego', juegoRoutes);
+app.use('/agregarjuego', agregarJuegoRoutes);
+app.use('/perfil', perfilRoutes);
+app.use('/login', loginRoutes);
+app.use('/acercade', acercaDeRoutes);
 
 app.listen(app.get('port'), () =>{
     console.log(`server on port ${app.get('port')}`);
