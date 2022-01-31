@@ -34,11 +34,13 @@
                         <div class="datos-juego">
                             <div class="clasificacion-juego">
                                 <span>
-                                    <%= juegos[i].nombre %>
+                                    <a href="/juego/<%= juegos[i].nombre %>">
+                                        <%= juegos[i].nombre %>
+                                    </a>
+                                    
                                 </span>
                                 <p>Calificación: 5</p>
                             </div>
-
                             <%= juegos[i].descripcion %>
                         </div>
                     </td>

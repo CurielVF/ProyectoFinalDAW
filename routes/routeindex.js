@@ -4,6 +4,7 @@ const Creador = require('../model/creador');
 const Juego = require('../model/juego');
 
 router.get("/", async (req, res) => {
+    /*
     let creadores = await Creador.find()
 
     juegos = []
@@ -12,6 +13,8 @@ router.get("/", async (req, res) => {
             juegos.push(creadores[i].juegos[j])
         }
     }
+    */
+    let juegos = await Juego.find()
     res.render("pages/index", { juegos })
 })
 
