@@ -61,7 +61,7 @@ h1, h2, h3 {
     border: 2px solid #9c9c9c;
     border-collapse: collapse;
     background-color: white;
-
+    margin-bottom: 20px;
 }
 
 .juegos-creador tr {
@@ -188,4 +188,9 @@ footer a{
 
 footer li{
     color: white;
+}
+
+.cerrar-sesion{
+    margin: 0 auto;
+    display: block;
 }
