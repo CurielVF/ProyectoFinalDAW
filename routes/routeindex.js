@@ -26,6 +26,18 @@ router.get("/api/juegos/:buscarpor/:busqueda/:orden", async (req, res) => {
     return res.json(juegos);
 });
 
+router.get("/api/juegos/:orden", async (req, res) => {
+    var orden = req.params.orden;
+    let juegos = await Juego.find()
+        .sort({ [orden]: 1 })
+    return res.json(juegos);
+});
+
+router.get("/api/juegos", async (req, res) => {
+    let juegos = await Juego.find().sort({ nombre: 1 })
+    return res.json(juegos);
+});
+
 
 
 //Ejemplo para añadir datos a base ----------------------------------
