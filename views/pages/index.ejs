@@ -3,6 +3,15 @@
         <h1>Catálogo de juegos</h1>
         <div class="herramientas-busqueda">
             <div class="busqueda">
+                <div class="drop-orden">
+                    <label>Buscar por: </label>
+                    <select id="busqueda-drop">
+                        <option value="nombre">Nombre</option>
+                        <option value="creador">Creador</option>
+                        <option value="descripción">Descripcion</option>
+                        <option value="categoría">Categoria</option>
+                    </select>
+                </div>
                 <input type="text" class="input-busqueda">
                 <a href="/">
                     <img src="./img/lupa-busqueda.png" alt="buscar" class="boton-busqueda">
@@ -10,45 +19,106 @@
             </div>
             <div class="drop-orden">
                 <label>Ordenar por: </label>
-                <select>
-                    <option value="Nombre">Nombre</option>
-                    <option value="Creador">Creador</option>
-                    <option value="Calificacion">Calificación</option>
-                    <option value="Fecha">Fecha de lanzamiento</option>
+                <select id="orden-drop">
+                    <option value="nombre">Nombre</option>
+                    <option value="creador">Creador</option>
+                    <option value="calificacion">Calificación</option>
+                    <option value="fecha">Fecha de lanzamiento</option>
                 </select>
             </div>
         </div>
 
-        <table class="juegos-creador">
-            <% for(var i=0; i < juegos.length; i++) { %>
-                <tr class="clickable-row">
-                    <td>
-                        <img src=<%=juegos[i].imagen %> class="imagen-juego">
-                        <div class="datos-juego">
-                            <div class="clasificacion-juego">
-                                <span>
-                                    <a href="/juego/<%= juegos[i].nombre %>">
-                                        <%= juegos[i].nombre %>
-                                    </a>
-                                    
-                                </span>
-                                <p>Calificación: 5</p>
-                            </div>
-                            <p> Creador:
-                                <a href="/creador/<%= juegos[i].creador %>">
-                                    <%= juegos[i].creador %>
-                                </a>
-                            </p>
+        <% if(juegos.length !=0){ %>
+            <table class="juegos-creador">
+                <% for(var i=0; i < juegos.length; i++) { %>
+                    <tr class="clickable-row">
+                        <td class="fila-juego">
+                            <img src=<%=juegos[i].imagen %> class="imagen-juego">
+                            <div class="datos-juego">
+                                <div class="clasificacion-juego">
+                                    <span>
+                                        <a href="/juego/<%= juegos[i].nombre %>">
+                                            <%= juegos[i].nombre %>
+                                        </a>
 
-                            <%= juegos[i].descripcion %>
-                        </div>
-                    </td>
-                </tr>
-                <% } %>
-        </table>
+                                    </span>
+                                    <p>Calificación: 5</p>
+                                </div>
+                                <p> Creador:
+                                    <a href="/creador/<%= juegos[i].creador %>">
+                                        <%= juegos[i].creador %>
+                                    </a>
+                                </p>
+
+                                <%= juegos[i].descripcion %>
+                            </div>
+                        </td>
+                    </tr>
+                    <% } %>
+            </table>
+            <% }else{%>
+                <h2>No se encontraron juegos disponibles</h2>
+                <% }%>
     </main>
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="./js/clickable.js"></script>
+
+    <script type="text/javascript">
+        function consultaApiBusqueda(){
+            var buscarPor = $("#busqueda-drop").val().trim()
+            var orden = $("#orden-drop").val().trim()
+            var busqueda = $(".input-busqueda").val().trim()
+
+            if ($(".input-busqueda").val().trim() != "") {
+                
+                $.get("/api/juegos/" + buscarPor + "/" + busqueda + "/" + orden, function (data) {
+                    $(".juegos-creador").empty()
+                    for (var i = 0; i < data.length; i++) {
+
+                        $(".juegos-creador").append(`
+                    <tr class="clickable-row">
+                        <td class="fila-juego">
+                            <img src=${data[i].imagen} class="imagen-juego">
+                            <div class="datos-juego">
+                                <div class="clasificacion-juego">
+                                    <span>
+                                        <a href="/juego/${data[i].nombre}">
+                                            ${data[i].nombre}
+                                        </a>
+                                    </span>
+                                    <p>Calificación: 5</p>
+                                </div>
+                                <p> Creador:
+                                    <a href="/creador/${data[i].creador}">
+                                        ${data[i].creador}
+                                    </a>
+                                </p>
+                                ${data[i].descripcion}
+                            </div>
+                        </td>
+                    </tr>
+                        `
+                        )
+                    }
+                })
+            }
+            else {
+                window.location.href = "/"
+            }
+
+        }
+
+        $(".boton-busqueda").on('click', function (e) {
+            e.preventDefault()
+            consultaApiBusqueda()
+        })
+
+        $("#orden-drop").change( function (e) {
+            e.preventDefault()
+            console.log("funcion")
+            consultaApiBusqueda()
+        })
+    </script>
 
     <%- include('../template/footer')-%>
