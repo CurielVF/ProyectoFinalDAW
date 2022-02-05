@@ -34,7 +34,7 @@ const agregarJuegoRoutes = require('./routes/routeagregarjuego');
 const perfilRoutes = require('./routes/routeperfil');
 const acercaDeRoutes = require('./routes/routeacercade');
 const loginRoutes = require('./routes/routelogin');
-
+const modificarJuegoRoutes = require('./routes/routemodificarjuego');
 
 //Rutas
 app.use('/', indexRoutes);
@@ -44,6 +44,7 @@ app.use('/agregarjuego', agregarJuegoRoutes);
 app.use('/perfil', perfilRoutes);
 app.use('/login', loginRoutes);
 app.use('/acercade', acercaDeRoutes);
+app.use('/modificarjuego', modificarJuegoRoutes);
 
 app.listen(app.get('port'), () =>{
     console.log(`server on port ${app.get('port')}`);

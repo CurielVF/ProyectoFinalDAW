@@ -1,0 +1,71 @@
+<%- include('../template/head') -%>
+    <main>
+        <h1>Modificar juego</h1>
+        <form role="form">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Nombre</label>
+                    <input id="inputNombre" class="form-control" id="inputNombre" placeholder="Nombre">
+                </div>
+                <div class="form-group">
+                    <label for="inputState">Fecha de creacion</label>
+                    <input type="date" id="inputFecha" name="fecha" min="2000-01-01" max="2022-03-01" />
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Clasificación</label>
+                <input id="inputClasificacion" type="text" class="form-control" id="inputClasificacion"
+                    placeholder="+18">
+            </div>
+            <div class="form-group">
+                <label for="inputAddress2">Descipción</label>
+                <input id="inputDescripcion" type="text" class="form-control" id="inputDescripcion"
+                    placeholder="Es un juego de.....">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputCity">Autor</label>
+                    <input id="inputAutor" type="text" class="form-control" id="inputCity">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputCategoria">Categoria</label>
+                    <select id="inputCategoria" class="form-control">
+                        <option selected>....</option>
+                        <option>Accion</option>
+                        <option>Arcade</option>
+                        <option>Deportivo</option>
+                        <option>Estrategia</option>
+                        <option>Simulacion</option>
+                        <option>Otros</option>
+                    </select>
+                    
+                </div>
+                <a href="/">
+                    <button id="agregar-juego" type="submit" class="btn btn-primary btn-sm">Agregar
+                        Juego</button>
+                </a>
+        </form>
+    </main>
+
+    <script type="text/javascript">
+        $("#agregar-juego").on('click', function (e) {
+            e.preventDefault()
+            var newJuego = {
+                nombre: $("#inputNombre").val().trim(),
+                creador: $("#inputAutor").val().trim(),
+                descripcion: $("#inputDescripcion").val().trim(),
+                clasificacion: $("#inputClasificacion").val().trim(),
+                imagen: "https://coatepec.gob.mx/wp-content/uploads/2019/09/4K-Moving-Stars-Live-Wallpaper-1.jpg",
+                categoria: $("#inputCategoria").val().trim()
+            }
+            console.log(newJuego)
+            $.post("/agregarjuego/api", newJuego)
+                .then(function (data) {
+
+                })
+            window.location.href = "/";
+        })
+    </script>
+
+    <%- include('../template/footer')-%>
