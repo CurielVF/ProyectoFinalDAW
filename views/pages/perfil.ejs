@@ -1,5 +1,4 @@
-
-<%- include('../template/head')      -%>
+<%- include('../template/head') -%>
 
     <main>
         <h1>
@@ -31,7 +30,7 @@
         <table class="juegos-creador">
             <% for(var i=0; i < juegos.length; i++) { %>
                 <tr class="clickable-row">
-                    <td>
+                    <td class="fila-juego">
                         <img src=<%=juegos[i].imagen %> class="imagen-juego">
                         <div class="datos-juego">
                             <div class="clasificacion-juego">
@@ -39,12 +38,23 @@
                                     <a href="/juego/<%= juegos[i].nombre %>">
                                         <%= juegos[i].nombre %>
                                     </a>
-                                    
+
                                 </span>
                                 <p>Calificación: 5</p>
                             </div>
                             <%= juegos[i].descripcion %>
                         </div>
+                    </td>
+
+                    <td>
+                        <a href="/modificarjuego">
+                            <button class="btn-info">Editar</button>
+                        </a>
+                    </td>
+                    <td>
+                        <button onclick="eliminarjuego('<%= juegos[i].nombre %>')" id="borrar-juego"
+                            class="btn-danger">Borrar</button>
+
                     </td>
                 </tr>
                 <% } %>
@@ -59,4 +69,12 @@
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="./js/clickable.js"></script>
 
-<%- include('../template/footer')-%>
+    <script type="text/javascript">
+        function eliminarjuego(id) {
+            var answer = window.confirm("¿Estas seguro de eliminar el juego \"" + id + "\"?");
+            if (answer) {
+                window.location.href = "perfil/borrarjuego/" + id
+            }
+        }
+    </script>
+    <%- include('../template/footer')-%>

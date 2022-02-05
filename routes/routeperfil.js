@@ -13,4 +13,8 @@ router.get("/", async (req, res) => {
     }
 })
 
+router.get("/borrarjuego/:nombre", async (req, res) => {
+    console.log("Eliminado");
+})
+
 module.exports = router;

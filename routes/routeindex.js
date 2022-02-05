@@ -4,19 +4,40 @@ const Creador = require('../model/creador');
 const Juego = require('../model/juego');
 
 router.get("/", async (req, res) => {
-    /*
-    let creadores = await Creador.find()
+    console.log(req.body)
 
-    juegos = []
-    for (let i = 0; i < creadores.length; i++) {
-        for (let j = 0; j < creadores[i].juegos.length; j++) {
-            juegos.push(creadores[i].juegos[j])
-        }
-    }
-    */
-    let juegos = await Juego.find()
+    let juegos = await Juego.find().sort({ nombre: 1 })
     res.render("pages/index", { juegos })
 })
+
+router.get("/api/juegos/:buscarpor/:busqueda/:orden", async (req, res) => {
+    var busqueda = req.params.busqueda;
+    var buscarPor = req.params.buscarpor;
+    var orden = req.params.orden;
+
+    console.log(busqueda);
+    console.log(buscarPor);
+    console.log(orden);
+
+    console.log({ [buscarPor]: new RegExp(busqueda, "i") })
+
+    let juegos = await Juego.find({ $or: [{ [buscarPor]: new RegExp(busqueda, "i") }] })
+        .sort({ [orden]: 1 })
+    return res.json(juegos);
+});
+
+router.get("/api/juegos/:orden", async (req, res) => {
+    var orden = req.params.orden;
+    let juegos = await Juego.find()
+        .sort({ [orden]: 1 })
+    return res.json(juegos);
+});
+
+router.get("/api/juegos", async (req, res) => {
+    let juegos = await Juego.find().sort({ nombre: 1 })
+    return res.json(juegos);
+});
+
 
 
 //Ejemplo para añadir datos a base ----------------------------------
@@ -34,7 +55,7 @@ router.get("/addDB", async (req, res) => {
             { nombre: "Journey", creador: "Thatgamecompany", descripcion: "Journey es uno de los juegos más bonitos que existen. Con ausencia total de diálogos, el juego te lleva en un viaje de descubrimiento mientras te diriges hacia la cima de una montaña. Es posible avanzar en solitario o encontrarte con otros jugadores que están teniendo la misma experiencia que tú. En pocas palabras, Journey fascina por su simplicidad y riqueza visual.", imagen: "https://cdn.ligadegamers.com/imagenes/journey-mejores-juegos-indie.jpg" },
             { nombre: "Sky: Niños de la Luz", creador: "Thatgamecompany", descripcion: "Sky: Niños de la Luz es un videojuego indie social de mundo abierto desarrollado y lanzado por Thatgamecompany. Su primer lanzamiento fue en iOS el 18 de Julio de 2019.", imagen: "https://fs-prod-cdn.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_download_software_1/H2x1_NSwitchDS_SkyChildrenOfTheLight_ES_image1600w.jpg" },
         ]
-    } 
+    }
     let cre2 = {
         nombre: "ACE Team", descripcion: "ACE Team es una compañía independiente de videojuegos establecida en Santiago, Chile. Su nombre proviene de las iniciales de los 3 miembros fundadores: Andres Bordeu, Carlos Bordeu y Edmundo Bordeu. Ha licenciado con el motor Source con el que realizó su juego debut Zeno Clash.", imagen: "https://sm.ign.com/ign_latam/screenshot/default/ace-team-logo-black-600x366_dk86.jpg", sitio: "https://www.aceteam.cl/index.html", correo: "contact@aceteam.cl", telefono: "(650)723-4906", calificacion: 3.5,
         juegos: [
@@ -65,7 +86,7 @@ router.get("/addDB", async (req, res) => {
     await task3.save()
     await task4.save()
 
-    
+
     let task = new Creador(cre)
     let task2 = new Creador(cre2)
     await task.save()
