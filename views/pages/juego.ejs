@@ -23,12 +23,29 @@
             <p>
                 <span>Categoria: </span>
                 <%= categoria %>
+
             </p>
+            <p>
+                <span>Comentarios:</span>
+                <%= comentarios %>
+            </p>
+            
         </div>
 
     </main>
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="./js/clickable.js"></script>
+
+    <div class="form-group col-md-4" style="margin-left: 5%;">
+        <label for="inputComentarios">Comentarios</label>
+        <input id="inputComentarios" type="text" class="form-control" id="inputComentarios"
+            placeholder="Super Buen juego">
+
+        <a href="/">
+            <button id="agregar-comentario" type="submit" class="btn btn-primary btn-sm">Publicar</button>
+        </a>
+    </div>
+    
 
     <%- include('../template/footer')-%>
