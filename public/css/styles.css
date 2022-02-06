@@ -38,7 +38,7 @@ main {
 
 .imagen-creador {
     height: 20%;
-    width: 20%;
+    width: 30%;
     display: block;
     margin: auto;
 }
@@ -194,3 +194,57 @@ footer li{
     margin: 0 auto;
     display: block;
 }
+
+
+ 
+          
+        /* Media Query for Mobile Devices */ 
+        @media (max-width: 480px) { 
+            
+            .drop-orden{
+                display: none
+            }
+            #logo{
+                display: none
+            }
+            .imagen-juego{
+                width: 20%
+            }
+            .datos-juego{
+                font-size: 70%
+            }
+        } 
+          
+        /* Media Query for low resolution  Tablets, Ipads */ 
+        @media (min-width: 481px) and (max-width: 767px) { 
+             
+            #ordenarpor {
+                display: none
+            }
+            #inputComentarios{
+                width: 50%
+            }
+            drop-cal{
+                padding-left: 15%
+            }
+            .imagen-juego{
+                width: 40%
+                    
+            }
+        } 
+          
+        /* Media Query for Tablets Ipads portrait mode */ 
+        @media (min-width: 768px) and (max-width: 1024px){ 
+            
+        } 
+          
+        /* Media Query for Laptops and Desktops */ 
+        @media (min-width: 1025px) and (max-width: 1280px){ 
+            
+        } 
+          
+        /* Media Query for Large screens */ 
+        @media (min-width: 1281px) { 
+             
+        } 
+    
