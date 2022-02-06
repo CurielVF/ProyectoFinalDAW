@@ -8,7 +8,7 @@ const JuegoSchema = Schema({
     clasificacion: String,
     imagen: String,
     categoria: String,
-    comentarios: String
+    comentarios: Array
 
 })
 
