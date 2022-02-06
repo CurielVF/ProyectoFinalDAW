@@ -4,7 +4,7 @@
             <%= nombre %>
         </h1>
 
-        <img src=<%=imagen %> class="imagen-creador" name="imagen-juego" id="<%= _id %>">
+        <img id="img-juego" src=<%=imagen %> class="imagen-creador" name="imagen-juego" id="<%= _id %>">
             <div class="datos-juego">
                 <p>
                     <span>Creador: </span>
@@ -40,9 +40,9 @@
                 </p>
                 <p>
                     <span>Comentarios:</span>
-                    <div class="form-group col-md-4" style="margin-left: 5%;">
+                    <div class="form-group col-md-4"  style="margin-left: 0%; padding-left:0%;">
                         <div>
-                            <form role="form">
+                            <form id="drop-cal" role="form">
                                 <div class="calificacion">
                                     <label>Calificación: </label>
                                     <select id="calificacion-comentario">
