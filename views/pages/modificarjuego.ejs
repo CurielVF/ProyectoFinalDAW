@@ -5,66 +5,75 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputEmail4">Nombre</label>
-                    <input id="inputNombre" class="form-control" id="inputNombre" placeholder="Nombre">
+                    <input id="inputNombre" class="form-control"  placeholder="Nombre" value="<%= juego.nombre %> ">
                 </div>
                 <div class="form-group">
                     <label for="inputState">Fecha de creacion</label>
-                    <input type="date" id="inputFecha" name="fecha" min="2000-01-01" max="2022-03-01" />
+                    <input type="date" id="inputFecha" name="fecha" min="2000-01-01" max="2022-03-01" value="<%= juego.fecha.toISOString().substr(0, 10) %>"/>
                 </div>
 
             </div>
             <div class="form-group">
                 <label for="inputAddress">Clasificación</label>
                 <input id="inputClasificacion" type="text" class="form-control" id="inputClasificacion"
-                    placeholder="+18">
+                    placeholder="+18" value="<%= juego.clasificacion %> ">
             </div>
             <div class="form-group">
                 <label for="inputAddress2">Descipción</label>
-                <input id="inputDescripcion" type="text" class="form-control" id="inputDescripcion"
-                    placeholder="Es un juego de.....">
+                <textarea id="inputDescripcion" placeholder="Es un juego de....." type="text" class="form-control"
+                    rows="5"><%= juego.descripcion %> </textarea>
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputCity">Autor</label>
-                    <input id="inputAutor" type="text" class="form-control" id="inputCity">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="inputCategoria">Categoria</label>
-                    <select id="inputCategoria" class="form-control">
-                        <option selected>....</option>
-                        <option>Accion</option>
-                        <option>Arcade</option>
-                        <option>Deportivo</option>
-                        <option>Estrategia</option>
-                        <option>Simulacion</option>
-                        <option>Otros</option>
-                    </select>
-                    
-                </div>
-                <a href="/">
-                    <button id="agregar-juego" type="submit" class="btn btn-primary btn-sm">Agregar
-                        Juego</button>
-                </a>
+            <div class="form-group">
+                <label for="inputDescarga">Link de descarga</label>
+                <input id="inputDescarga" type="text" class="form-control" value="<%= juego.descarga %> ">
+            </div>
+            <div class="form-group">
+                <label for="inputImage">Link de imagen</label>
+                <input id="inputImage" type="text" class="form-control" value="<%= juego.imagen %> ">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputCategoria">Categoria</label>
+                <select id="inputCategoria" class="form-control" >
+                    <option selected hidden><%= juego.categoria %></option>
+                    <option>....</option>
+                    <option>Accion</option>
+                    <option>Arcade</option>
+                    <option>Deportivo</option>
+                    <option>Estrategia</option>
+                    <option>Simulacion</option>
+                    <option>Otros</option>
+                </select>
+
+            </div>
+            <a href="/">
+                <button id="modificar-juego" type="submit" class="btn btn-primary btn-sm">Modificar
+                    Juego</button>
+            </a>
+            <div id="<%= juego._id %>" name="id-juego"></div>
         </form>
     </main>
 
     <script type="text/javascript">
-        $("#agregar-juego").on('click', function (e) {
+        $("#modificar-juego").on('click', function (e) {
             e.preventDefault()
+            console.log("funcionando")
             var newJuego = {
                 nombre: $("#inputNombre").val().trim(),
-                creador: $("#inputAutor").val().trim(),
+                creador: "Thatgamecompany",
                 descripcion: $("#inputDescripcion").val().trim(),
                 clasificacion: $("#inputClasificacion").val().trim(),
-                imagen: "https://coatepec.gob.mx/wp-content/uploads/2019/09/4K-Moving-Stars-Live-Wallpaper-1.jpg",
-                categoria: $("#inputCategoria").val().trim()
+                imagen: $("#inputImage").val().trim()=="" ? "https://images4.alphacoders.com/100/thumb-350-1008904.png" : $("#inputImage").val().trim() ,
+                categoria: $("#inputCategoria").val().trim(),
+                creadorId: "Thatgamecompany",
+                descarga: $("#inputDescarga").val().trim(),
+                fecha: $("#inputFecha").val().trim()
             }
             console.log(newJuego)
-            $.post("/agregarjuego/api", newJuego)
+            $.post("/modificarjuego/api/"+document.getElementsByName('id-juego')[0].id, newJuego)
                 .then(function (data) {
 
                 })
-            window.location.href = "/";
+            window.location.href = "/perfil";
         })
     </script>
 
