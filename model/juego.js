@@ -9,7 +9,12 @@ const JuegoSchema = Schema({
     imagen: String,
     categoria: String,
     comentarios: Array,
-    _id: String,
+    _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        index: true,
+        required: true,
+        auto: true,
+    },
     creadorId: String
 })
 

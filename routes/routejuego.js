@@ -7,7 +7,7 @@ router.get("/:id", async (req, res) => {
 
     for (let i = 0; i < juegos.length; i++) {
 
-        if (juegos[i]._id === req.params.id) {
+        if (juegos[i]._id == req.params.id) {
             console.log(juegos[i])
             res.render("pages/juego", juegos[i])
         }
