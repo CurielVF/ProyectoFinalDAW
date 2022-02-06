@@ -21,4 +21,8 @@ router.get("/borrarjuego/:id", async (req, res) => {
     res.redirect('/perfil')
 })
 
+router.post("/api/modificarperfil/:id", async (req, res) => {
+    await Creador.updateOne({_id:req.params.id},req.body) 
+})
+
 module.exports = router;
