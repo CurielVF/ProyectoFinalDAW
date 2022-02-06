@@ -16,7 +16,17 @@ router.get("/", async (req, res) => {
 })
 
 router.get("/borrarjuego/:id", async (req, res) => {
-    console.log("Eliminado");
+    let id = req.params.id
+    await Juego.remove({ _id: id })
+    res.redirect('/perfil')
+})
+
+router.post("/api/modificarperfil/:id", async (req, res) => {
+    await Creador.updateOne({_id:req.params.id},req.body) 
+    var newJuego = {
+        creador: req.body.nombre
+    }
+    await Juego.updateMany({creadorId:req.params.id},newJuego) 
 })
 
 module.exports = router;

@@ -2,67 +2,75 @@
 
     <main>
         <h1>
-            <%= nombre %>
+            Perfil
         </h1>
-
-        <img src=<%=imagen %> class="imagen-creador">
-        <div class="datos-creador">
-            <p>
-                <span>Sitio web: </span>
-                <a href=<%=sitio %>>
-                    <%= sitio %>
-                </a>
-            </p>
-            <p>
-                <span>Correo electrónico: </span>
-                <%= correo %>
-            </p>
-            <p>
-                <span>Teléfono: </span>
-                <%= telefono %>
-            </p>
-            <p>
-                <span>Calificación: </span>0
-            </p>
-        </div>
-
+        <form role="form">
+            <div class="form-group">
+                <label for="inputNombre">Nombre</label>
+                <input id="inputNombre" class="form-control" placeholder="Nombre" value="<%= nombre %> ">
+            </div>
+            <img src=<%=imagen %> class="imagen-creador">
+            <div class="form-group">
+                <label for="inputImage">Foto de perfil</label>
+                <input id="inputImage" type="text" class="form-control" value="<%= imagen %> ">
+            </div>
+            <div>
+                <div class="form-group">
+                    <label for="inputSitio">Sitio web</label>
+                    <input id="inputSitio" type="text" class="form-control" value="<%= sitio %> ">
+                </div>
+                <div class="form-group">
+                    <label for="inputTelefono">Teléfono</label>
+                    <input id="inputTelefono" type="text" class="form-control" value="<%= telefono %> ">
+                </div>
+                <div class="form-group">
+                    <label for="inputCorreo">Correo elecrónico</label>
+                    <input id="inputCorreo" type="text" class="form-control" disabled="true" value="<%= correo %> ">
+                </div>
+            </div>
+            <button id="guardar-cambios" type="submit" class="btn btn-primary btn-sm">Guardar cambios</button>
+        </form>
         <h3>Juegos del creador:</h3>
-        <table class="juegos-creador">
-            <% for(var i=0; i < juegos.length; i++) { %>
-                <tr class="clickable-row">
-                    <td class="fila-juego">
-                        <img src=<%=juegos[i].imagen %> class="imagen-juego">
-                        <div class="datos-juego">
-                            <div class="clasificacion-juego">
-                                <span>
-                                    <a href="/juego/<%= juegos[i]._id %>">
-                                        <%= juegos[i].nombre %>
-                                    </a>
+        <% if(juegos.length !=0) {%>
+            <table class="juegos-creador">
+                <% for(var i=0; i < juegos.length; i++) { %>
+                    <tr class="clickable-row">
+                        <td class="fila-juego">
+                            <img src=<%=juegos[i].imagen %> class="imagen-juego">
+                            <div class="datos-juego">
+                                <div class="clasificacion-juego">
+                                    <span>
+                                        <a href="/juego/<%= juegos[i]._id %>">
+                                            <%= juegos[i].nombre %>
+                                        </a>
 
-                                </span>
-                                <p>Calificación: 5</p>
+                                    </span>
+                                    <p>Calificación: 5</p>
+                                </div>
+                                <%= juegos[i].descripcion %>
                             </div>
-                            <%= juegos[i].descripcion %>
-                        </div>
-                    </td>
+                        </td>
 
-                    <td>
-                        <a href="/modificarjuego">
-                            <button class="btn-info">Editar</button>
-                        </a>
-                    </td>
-                    <td>
-                        <button onclick="eliminarjuego('<%= juegos[i].nombre %>')" id="borrar-juego"
-                            class="btn-danger">Borrar</button>
+                        <td>
+                            <a href="/modificarjuego/<%= juegos[i]._id %>">
+                                <button class="btn-info">Editar</button>
+                            </a>
+                        </td>
+                        <td>
+                            <button onclick="eliminarjuego('<%= juegos[i]._id %>','<%= juegos[i].nombre %>')"
+                                id="borrar-juego" class="btn-danger">Borrar</button>
 
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
+                    <% } %>
+            </table>
+            <% }else{ %>
+                <h3>No se encontraron juegos disponibles</h3>
                 <% } %>
-        </table>
-
-        <a href="/login">
-            <button class="cerrar-sesion btn-danger">Cerrar Sesión</button>
-        </a>
+                    <a href="/login">
+                        <button class="cerrar-sesion btn-danger">Cerrar Sesión</button>
+                    </a>
+                    <div id="<%= _id %>" name="id-perfil"></div>
     </main>
 
     <script src="https://code.jquery.com/jquery-3.4.1.js"
@@ -70,11 +78,30 @@
     <script src="./js/clickable.js"></script>
 
     <script type="text/javascript">
-        function eliminarjuego(id) {
-            var answer = window.confirm("¿Estas seguro de eliminar el juego \"" + id + "\"?");
+        function eliminarjuego(id, nombre) {
+            var answer = window.confirm("¿Estas seguro de eliminar el juego \"" + nombre + "\"?");
             if (answer) {
                 window.location.href = "perfil/borrarjuego/" + id
             }
         }
+
+        $("#guardar-cambios").on('click', function (e) {
+            e.preventDefault()
+            console.log("funcionando")
+            var perfil = {
+                nombre: $("#inputNombre").val().trim(),
+                imagen: $("#inputImage").val().trim() == "" ? "https://images4.alphacoders.com/100/thumb-350-1008904.png" : $("#inputImage").val().trim(),
+                sitio: $("#inputSitio").val().trim(),
+                telefono: $("#inputTelefono").val().trim(),
+                correo: $("#inputCorreo").val().trim()
+            }
+            console.log(perfil)
+            $.post("/perfil/api/modificarperfil/" + document.getElementsByName('id-perfil')[0].id, perfil)
+                .then(function (data) {
+
+                })
+            window.location.href = "/perfil";
+        })
+
     </script>
     <%- include('../template/footer')-%>

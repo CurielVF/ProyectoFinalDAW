@@ -8,6 +8,7 @@ const JuegoSchema = Schema({
     clasificacion: String,
     imagen: String,
     categoria: String,
+    fecha: Date,
     comentarios: Array,
     _id: {
         type: mongoose.Schema.Types.ObjectId,
@@ -15,7 +16,12 @@ const JuegoSchema = Schema({
         required: true,
         auto: true,
     },
-    creadorId: String
+    creadorId: String,
+    descarga:String,
+    calificacion:{
+        type: Number,
+        default:0
+    }
 })
 
 

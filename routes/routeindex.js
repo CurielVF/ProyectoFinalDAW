@@ -67,7 +67,18 @@ router.get("/addDB", async (req, res) => {
         imagen: "https://cdn.ligadegamers.com/imagenes/journey-mejores-juegos-indie.jpg",
         clasificacion: "+18",
         categoria: "Shootter",
-        creadorId: "Thatgamecompany"
+        creadorId: "Thatgamecompany",
+        fecha: Date("2008/01/30 23:30:14"),
+        comentarios:[{
+            creadorId: "Thatgamecompany",
+            comentario: "Pesimo juego",
+            calificacion: 1
+        },{
+            creadorId: "Thatgamecompany",
+            comentario: "Genial juego",
+            calificacion: 5
+        }
+    ]
     }
 
     let jue2 = {
@@ -77,7 +88,8 @@ router.get("/addDB", async (req, res) => {
         imagen: "https://fs-prod-cdn.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_download_software_1/H2x1_NSwitchDS_SkyChildrenOfTheLight_ES_image1600w.jpg",
         clasificacion: "+18",
         categoria: "Shootter",
-        creadorId: "Thatgamecompany"
+        creadorId: "Thatgamecompany",
+        fecha: Date("2018/01/30 23:30:14")
     }
 
     let task3 = new Juego(jue)
