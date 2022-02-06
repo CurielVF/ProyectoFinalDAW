@@ -20,31 +20,34 @@
             </div>
             <div class="form-group">
                 <label for="inputAddress2">Descipción</label>
-                <input id="inputDescripcion" type="text" class="form-control" id="inputDescripcion"
-                    placeholder="Es un juego de.....">
+                <textarea id="inputDescripcion" placeholder="Es un juego de....." type="text" class="form-control"
+                    id="inputDescripcion" rows="5"></textarea>
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputCity">Autor</label>
-                    <input id="inputAutor" type="text" class="form-control" id="inputCity">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="inputCategoria">Categoria</label>
-                    <select id="inputCategoria" class="form-control">
-                        <option selected>....</option>
-                        <option>Accion</option>
-                        <option>Arcade</option>
-                        <option>Deportivo</option>
-                        <option>Estrategia</option>
-                        <option>Simulacion</option>
-                        <option>Otros</option>
-                    </select>
-                    
-                </div>
-                <a href="/">
-                    <button id="agregar-juego" type="submit" class="btn btn-primary btn-sm">Agregar
-                        Juego</button>
-                </a>
+            <div class="form-group">
+                <label for="inputDescarga">Link de descarga</label>
+                <input id="inputDescarga" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="inputImage">Link de imagen</label>
+                <input id="inputImage" type="text" class="form-control">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputCategoria">Categoria</label>
+                <select id="inputCategoria" class="form-control">
+                    <option selected>....</option>
+                    <option>Accion</option>
+                    <option>Arcade</option>
+                    <option>Deportivo</option>
+                    <option>Estrategia</option>
+                    <option>Simulacion</option>
+                    <option>Otros</option>
+                </select>
+
+            </div>
+            <a href="/">
+                <button id="agregar-juego" type="submit" class="btn btn-primary btn-sm">Agregar
+                    Juego</button>
+            </a>
         </form>
     </main>
 
@@ -53,11 +56,14 @@
             e.preventDefault()
             var newJuego = {
                 nombre: $("#inputNombre").val().trim(),
-                creador: $("#inputAutor").val().trim(),
+                creador: "Thatgamecompany",
                 descripcion: $("#inputDescripcion").val().trim(),
                 clasificacion: $("#inputClasificacion").val().trim(),
-                imagen: "https://coatepec.gob.mx/wp-content/uploads/2019/09/4K-Moving-Stars-Live-Wallpaper-1.jpg",
-                categoria: $("#inputCategoria").val().trim()
+                imagen: $("#inputImage").val().trim()=="" ? "https://images4.alphacoders.com/100/thumb-350-1008904.png" : $("#inputImage").val().trim() ,
+                categoria: $("#inputCategoria").val().trim(),
+                creadorId: "Thatgamecompany",
+                descarga: $("#inputDescarga").val().trim(),
+                fecha: $("#inputFecha").val().trim()
             }
             console.log(newJuego)
             $.post("/agregarjuego/api", newJuego)

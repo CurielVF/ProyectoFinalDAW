@@ -8,8 +8,8 @@
                     <select id="busqueda-drop">
                         <option value="nombre">Nombre</option>
                         <option value="creador">Creador</option>
-                        <option value="descripción">Descripcion</option>
-                        <option value="categoría">Categoria</option>
+                        <option value="descripcion">Descripción</option>
+                        <option value="categoria">Categoría</option>
                     </select>
                 </div>
                 <input type="text" class="input-busqueda">
@@ -23,7 +23,6 @@
                     <option value="nombre">Nombre</option>
                     <option value="creador">Creador</option>
                     <option value="calificacion">Calificación</option>
-                    <option value="fecha">Fecha de lanzamiento</option>
                 </select>
             </div>
         </div>
@@ -42,7 +41,8 @@
                                         </a>
 
                                     </span>
-                                    <p>Calificación: 5</p>
+                                    <p>Calificación: <%= juegos[i].calificacion %>
+                                    </p>
                                 </div>
                                 <p> Creador:
                                     <a href="/creador/<%= juegos[i].creadorId %>">
@@ -94,7 +94,7 @@
             listaJuegos = data
             for (var i = 0; i < data.length; i++) {
                 $(".juegos-creador").append(`
-                    <tr class="clickable-row">
+                <tr class="clickable-row">
                         <td class="fila-juego">
                             <img src=${data[i].imagen} class="imagen-juego">
                             <div class="datos-juego">
@@ -103,18 +103,23 @@
                                         <a href="/juego/${data[i]._id}">
                                             ${data[i].nombre}
                                         </a>
+
                                     </span>
-                                    <p>Calificación: 5</p>
+                                    <p>Calificación: ${data[i].calificacion}</p>
                                 </div>
                                 <p> Creador:
-                                    <a href="/creador/${data[i].creador}">
+                                    <a href="/creador/${data[i].creadorId}">
                                         ${data[i].creador}
                                     </a>
                                 </p>
+                                
                                 ${data[i].descripcion}
                             </div>
                         </td>
                     </tr>
+
+
+
                         `
                 )
             }

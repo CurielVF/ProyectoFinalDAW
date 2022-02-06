@@ -21,12 +21,10 @@
                 <span>Teléfono: </span>
                 <%= telefono %>
             </p>
-            <p>
-                <span>Calificación: </span>0
-            </p>
         </div>
 
         <h3>Juegos del creador:</h3>
+        <% if(juegos.length != 0) {%> 
         <table class="juegos-creador">
             <% for(var i=0; i < juegos.length; i++) { %>
                 <tr class="clickable-row">
@@ -52,14 +50,16 @@
                         </a>
                     </td>
                     <td>
-                        <button onclick="eliminarjuego('<%= juegos[i].nombre %>')" id="borrar-juego"
+                        <button onclick="eliminarjuego('<%= juegos[i]._id %>','<%= juegos[i].nombre %>')" id="borrar-juego"
                             class="btn-danger">Borrar</button>
 
                     </td>
                 </tr>
                 <% } %>
         </table>
-
+        <% }else{ %>
+            <h3>No se encontraron juegos disponibles</h3>
+            <% } %>
         <a href="/login">
             <button class="cerrar-sesion btn-danger">Cerrar Sesión</button>
         </a>
@@ -70,8 +70,8 @@
     <script src="./js/clickable.js"></script>
 
     <script type="text/javascript">
-        function eliminarjuego(id) {
-            var answer = window.confirm("¿Estas seguro de eliminar el juego \"" + id + "\"?");
+        function eliminarjuego(id,nombre) {
+            var answer = window.confirm("¿Estas seguro de eliminar el juego \"" + nombre + "\"?");
             if (answer) {
                 window.location.href = "perfil/borrarjuego/" + id
             }

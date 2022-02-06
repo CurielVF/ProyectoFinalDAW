@@ -16,7 +16,9 @@ router.get("/", async (req, res) => {
 })
 
 router.get("/borrarjuego/:id", async (req, res) => {
-    console.log("Eliminado");
+    let id = req.params.id
+    await Juego.remove({ _id: id })
+    res.redirect('/perfil')
 })
 
 module.exports = router;
