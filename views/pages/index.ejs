@@ -37,7 +37,7 @@
                             <div class="datos-juego">
                                 <div class="clasificacion-juego">
                                     <span>
-                                        <a href="/juego/<%= juegos[i].nombre %>">
+                                        <a href="/juego/<%= juegos[i]._id %>">
                                             <%= juegos[i].nombre %>
                                         </a>
 
@@ -45,7 +45,7 @@
                                     <p>Calificación: 5</p>
                                 </div>
                                 <p> Creador:
-                                    <a href="/creador/<%= juegos[i].creador %>">
+                                    <a href="/creador/<%= juegos[i].creadorId %>">
                                         <%= juegos[i].creador %>
                                     </a>
                                 </p>
@@ -100,7 +100,7 @@
                             <div class="datos-juego">
                                 <div class="clasificacion-juego">
                                     <span>
-                                        <a href="/juego/${data[i].nombre}">
+                                        <a href="/juego/${data[i]._id}">
                                             ${data[i].nombre}
                                         </a>
                                     </span>

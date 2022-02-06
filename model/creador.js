@@ -8,8 +8,8 @@ const CreadorSchema = Schema({
     correo: String,
     imagen: String,
     telefono: String,
-    juegos: Array
-
+    juegos: Array,
+    _id: String
 })
 
 

@@ -27,9 +27,30 @@
             </p>
             <p>
                 <span>Comentarios:</span>
-                <%= comentarios %>
+                <% if(comentarios.length !=0){ %>
+                    <table class="comentarios-juego">
+                        <% for(var i=0; i < comentarios.length; i++) { %>
+                            <tr>
+                                <td class="fila-juego">
+                                    <div class="datos-juego">
+                                        <div class="clasificacion-juego">
+                                            <span>
+                                                <a href="/creador/<%= comentarios[i].nombre %>">
+                                                    <%= comentarios[i].nombre %>
+                                                </a>
+                                                <p>
+                                                    <%= comentarios[i].comentario %>
+                                                </p>
+                                        </div>
+                                </td>
+                            </tr>
+                            <% } %>
+                    </table>
+                    <% }else{%>
+                        <h2>No hay comentarios</h2>
+                        <% }%>
             </p>
-            
+
         </div>
 
     </main>
@@ -39,13 +60,42 @@
 
     <div class="form-group col-md-4" style="margin-left: 5%;">
         <label for="inputComentarios">Comentarios</label>
+        <div>
+            <form role="form">
+                <div class="calificacion">
+                    <label>Calificación: </label>
+                    <select id="calificacion-comentario">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+        </div>
+
         <input id="inputComentarios" type="text" class="form-control" id="inputComentarios"
             placeholder="Super Buen juego">
 
         <a href="/">
             <button id="agregar-comentario" type="submit" class="btn btn-primary btn-sm">Publicar</button>
         </a>
+        </form>
     </div>
-    
+
+    <script type="text/javascript">
+        $("#agregar-comentario").on('click', function (e) {
+            e.preventDefault()
+            var newComentario = {
+                nombre: "Thatgamecompany",
+                comentario: $("#inputComentarios").val().trim(),
+                calificacion: $("#calificacion-comentario").val().trim()
+            }
+
+            $.post("juego/api/comentario", newComentario)
+                .then(function (data) {
+                })
+        })
+    </script>
 
     <%- include('../template/footer')-%>
