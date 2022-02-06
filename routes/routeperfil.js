@@ -23,6 +23,10 @@ router.get("/borrarjuego/:id", async (req, res) => {
 
 router.post("/api/modificarperfil/:id", async (req, res) => {
     await Creador.updateOne({_id:req.params.id},req.body) 
+    var newJuego = {
+        creador: req.body.nombre
+    }
+    await Juego.updateMany({creadorId:req.params.id},newJuego) 
 })
 
 module.exports = router;
