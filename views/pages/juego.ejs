@@ -4,7 +4,8 @@
             <%= nombre %>
         </h1>
 
-        <img id="img-juego" src='<%=imagen %>' class="imagen-creador" onerror="this.src='https://thumbs.dreamstime.com/b/seamless-bright-vector-pattern-joysticks-video-game-controller-gaming-cool-print-boys-girls-textiles-sportswear-212032349.jpg';">
+        <img id="img-juego" src='<%=imagen %>' class="imagen-creador"
+            onerror="this.src='https://thumbs.dreamstime.com/b/seamless-bright-vector-pattern-joysticks-video-game-controller-gaming-cool-print-boys-girls-textiles-sportswear-212032349.jpg';">
         <div class="datos-juego">
             <p>
                 <span>Creador: </span>
@@ -14,7 +15,7 @@
             </p>
             <p>
                 <span>Calificación: </span>
-                <%= calificacion.toFixed(2) %>
+                <%= calificacion.toFixed(2) %> <span class="estrella-calificacion">★</span>
             </p>
             <p>
                 <span>Descripción: </span>
@@ -31,7 +32,7 @@
             <p>
                 <span>Link de descarga: </span>
                 <a href="<%= descarga!=null ? descarga : "" %>">
-                    <%=  descarga!="" ? descarga : "-" %>
+                    <%= descarga!="" ? descarga : "-" %>
                 </a>
             </p>
             <p>
@@ -39,10 +40,10 @@
                 <%= fecha.getDate() + "/" + (fecha.getMonth()+1 )+ "/" +fecha.getFullYear(); %>
             </p>
             <p>
-                <span>Comentarios:</span>
-            <div class="form-group col-md-4" style="margin-left: 0%; padding-left:0%;">
-                <div>
-                    <form id="drop-cal" role="form">
+            <h3>Comentarios</h3>
+            <div class="-seccion-comentarios">
+                <div class="agregar-comentario">
+                    <form id="drop-cal" role="form" >
                         <div class="calificacion">
                             <label>Calificación: </label>
                             <select id="calificacion-comentario">
@@ -52,45 +53,52 @@
                                 <option value="4">4</option>
                                 <option value="5">5</option>
                             </select>
+                            <span class="estrella-calificacion">★</span>
                         </div>
 
-                
-                        <input id="inputComentarios" type="text" class="form-control" id="inputComentarios"
-                            placeholder="Comenta lo que piensas...">
-                
-                        <a href="/">
-                            <button id="agregar-comentario" type="submit" class="btn btn-primary btn-sm">Publicar</button>
-                        </a>
-                        </form>
-                    </div>
-                    <% if(comentarios.length !=0){ %>
-                        <table class="comentarios-juego">
-                            <% for(var i=0; i < comentarios.length; i++) { %>
-                                <tr>
-                                    <td class="fila-juego">
-                                        <div id="comentario-ind" class="datos-juego">
-                                            <div class="clasificacion-juego">
-                                                <span>
-                                                    <a href="/creador/<%= comentarios[i].creadorId %>">
-                                                        <%= comentarios[i].creadorId %>
-                                                    </a>
-                                                    <p>
-                                                        <%= comentarios[i].comentario %>
-                                                    </p>
-                                                    <p>
-                                                        <%= comentarios[i].calificacion %>
-                                                    </p>
-                                            </div>
-                                    </td>
-                                </tr>
-                                <% } %>
-                        </table>
-                        <% }else{%>
-                            <h2>No hay comentarios</h2>
-                            <% }%>
-                </p>
 
+                        <textarea id="inputComentarios" type="text" class="form-control"
+                            placeholder="Comenta lo que piensas..." rows="5" vol></textarea>
+
+                        <a href="/">
+                            <button id="agregar-comentario" type="submit"
+                                class="btn btn-primary btn-sm">Publicar</button>
+                        </a>
+                    </form>
                 </div>
+
+                <% if(comentarios.length !=0){ %>
+                    <table class="comentarios-juego">
+                        <% for(var i=0; i < comentarios.length; i++) { %>
+                            <tr>
+                                <td class="fila-comentario">
+                                    <div id="comentario-ind">
+                                        <p>
+                                            <span>
+                                                Usuario:
+                                                <a href="/creador/<%= comentarios[i].creadorId %>">
+                                                    <%= comentarios[i].creadorId %>
+                                                </a>
+                                            </span>
+                                        </p>
+                                        <p>
+                                            <span>Calificación:</span>
+                                            <%= comentarios[i].calificacion %><span
+                                                    class="estrella-calificacion">★</span>
+                                        </p>
+                                        <p>
+                                            <%= comentarios[i].comentario %>
+                                        </p>
+                                </td>
+                            </tr>
+                            <% } %>
+                    </table>
+                    <% }else{%>
+                        <h2>No hay comentarios</h2>
+                        <% }%>
+                            </p>
+
+            </div>
 
 
 

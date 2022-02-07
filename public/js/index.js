@@ -48,7 +48,7 @@ function cambiarOrden(data) {
                         </a>
 
                     </span>
-                    <p id="cal-css">Calificación: ${data[i].calificacion.toFixed(2)}
+                    <p id="cal-css">Calificación: ${data[i].calificacion.toFixed(2)} <span class="estrella-calificacion">★</span>
                     </p>
                 </div>
                 <p> Creador:

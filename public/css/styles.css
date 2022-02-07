@@ -78,15 +78,6 @@ h1, h2, h3 {
     display: flex;
 }
 
-.clasificacion-juego {
-    display: flex;
-    justify-content: space-between;
-    
-}
- #comentario-ind{
-    background-color: #F8F8F8;
-    border-left: 3px solid #CCC;
-}
 
 .datos-juego {
     display: flex;
@@ -177,98 +168,186 @@ header a {
     align-items: center;
     justify-content: center;
 }
-#contenedor-equipo{
+
+#contenedor-equipo {
     color: white;
     justify-content: center;
 
 }
-#contenedor-equipo h5{
+
+#contenedor-equipo h5 {
     color: white;
     justify-content: center;
 }
 
-footer a{
+.clasificacion-juego {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+footer a {
     color: white;
 }
 
-footer li{
+footer li {
     color: white;
 }
 
-.cerrar-sesion{
+.cerrar-sesion {
     margin: 0 auto;
     display: block;
 }
 
-span{
+span {
     font-weight: bold;
 }
- 
-.datos-creador li{
+
+.datos-creador li {
     list-style-type: none;
 }
-          
-        /* Media Query for Mobile Devices */ 
-        @media (max-width: 480px) { 
-            
-            .drop-orden{
-                display: none
-            }
-            #logo{
-                display: none
-            }
-            .imagen-juego{
-                width: 20%
-            }
-            .datos-juego{
-                font-size: 70%
-            }
-            .fila-juego{
-                display:contents
-            }
 
-            .imagen-juego{
-                margin-left: 35%;
-                width: 30%
-                    
-            }
+.estrella-calificacion {
+    color: rgb(204, 204, 7);
+}
 
-            #cal-css{
-                margin-top: 10%
-            }
-            
-        } 
-          
-        /* Media Query for low resolution  Tablets, Ipads */ 
-        @media (min-width: 481px) and (max-width: 767px) { 
-             
-            #ordenarpor {
-                display: none
-            }
-            #inputComentarios{
-                width: 50%
-            }
-            drop-cal{
-                padding-left: 15%
-            }
-            .imagen-juego{
-                width: 40%
-                    
-            }
-        } 
-          
-        /* Media Query for Tablets Ipads portrait mode */ 
-        @media (min-width: 768px) and (max-width: 1024px){ 
-            
-        } 
-          
-        /* Media Query for Laptops and Desktops */ 
-        @media (min-width: 1025px) and (max-width: 1280px){ 
-            
-        } 
-          
-        /* Media Query for Large screens */ 
-        @media (min-width: 1281px) { 
-             
-        } 
-    
+select span {
+    color: rgb(204, 204, 7);
+}
+
+.comentarios-juego {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+#inputComentarios {
+    width: 700px;
+}
+
+.comentarios-juego tbody {
+    width: max-content;
+
+}
+
+#agregar-comentario {
+    margin: 10px auto;
+    display: block;
+}
+
+.agregar-comentario {
+    display: flex;
+    justify-content: center;
+}
+
+.seccion-comentarios {
+    width: 100%;
+}
+
+.fila-comentario {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 750px;
+    display: block;
+}
+
+#comentario-ind {
+    background-color: #F8F8F8;
+    border: 3px solid #CCC;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 480px) {
+    #inputComentarios {
+        width: 200px
+    }
+
+    .drop-orden {
+        display: none
+    }
+
+    #logo {
+        display: none
+    }
+
+    .imagen-juego {
+        width: 20%
+    }
+
+    .datos-juego {
+        font-size: 70%
+    }
+
+    .fila-juego {
+        display: contents
+    }
+
+    .imagen-juego {
+        margin-left: 35%;
+        width: 40%
+    }
+
+    .fila-comentario {
+        width: 200px;
+    }
+
+    #cal-css {
+        margin-top: 10%
+    }
+
+    .juegos-creador tr {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #editar-juego {
+        margin: 0 auto;
+        display: block;
+    }
+
+    #borrar-juego {
+        margin: 0 auto;
+        display: block;
+    }
+}
+
+/* Media Query for low resolution  Tablets, Ipads */
+@media (min-width: 481px) and (max-width: 767px) {
+
+    #ordenarpor {
+        display: none
+    }
+
+    #inputComentarios {
+        width: 300px
+    }
+
+    .fila-comentario {
+        width: 300px;
+    }
+
+    drop-cal {
+        padding-left: 15%
+    }
+
+    .imagen-juego {
+        width: 40%
+    }
+}
+
+/* Media Query for Tablets Ipads portrait mode */
+@media (min-width: 768px) and (max-width: 1024px) {}
+
+/* Media Query for Laptops and Desktops */
+@media (min-width: 1025px) and (max-width: 1280px) {}
+
+/* Media Query for Large screens */
+@media (min-width: 1281px) {}

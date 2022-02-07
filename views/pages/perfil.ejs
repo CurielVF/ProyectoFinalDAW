@@ -45,7 +45,7 @@
                                         </a>
 
                                     </span>
-                                    <p id="cal-css">Calificación: <%= juegos[i].calificacion.toFixed(2) %>
+                                    <p id="cal-css">Calificación: <%= juegos[i].calificacion.toFixed(2) %> <span class="estrella-calificacion">★</span>
                                     </p>
                                 </div>
                                 <%= juegos[i].descripcion %>
@@ -54,7 +54,7 @@
 
                         <td>
                             <a href="/modificarjuego/<%= juegos[i]._id %>">
-                                <button class="btn-info">Editar</button>
+                                <button  id="editar-juego" class="btn-info">Editar</button>
                             </a>
                         </td>
                         <td>
