@@ -14,7 +14,7 @@
             </p>
             <p>
                 <span>Calificación: </span>
-                <%= calificacion %>
+                <%= calificacion.toFixed(2) %>
             </p>
             <p>
                 <span>Descripción: </span>
@@ -56,7 +56,7 @@
                 </div>
 
                 <input id="inputComentarios" type="text" class="form-control" id="inputComentarios"
-                    placeholder="Super Buen juego">
+                    placeholder="Comenta lo que pienses...">
 
                 <a href="/">
                     <button id="agregar-comentario" type="submit" class="btn btn-primary btn-sm">Publicar</button>

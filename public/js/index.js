@@ -13,12 +13,12 @@ function consultaApiBusqueda() {
     if ($(".input-busqueda").val().trim() != "") {
 
         $.get("/api/juegos/" + buscarPor + "/" + busqueda + "/" + orden, function (data) {
-            cambiarOrden(data)
+            cambiarOrden(data.sort(sortByProperty(orden)))
         })
     }
     else {
         $.get("/api/juegos/" + orden, function (data) {
-            cambiarOrden(data)
+            cambiarOrden(data.sort(sortByProperty(orden)))
         })
     }
 
@@ -28,10 +28,10 @@ function cambiarOrden(data) {
     $(".juegos-creador").empty()
     listaJuegos = data
     $("#aviso-disponible").show()
-    if(data.length==0){
+    if (data.length == 0) {
         $("#aviso-disponible").show()
     }
-    else{
+    else {
         $("#aviso-disponible").hide()
     }
 
@@ -48,7 +48,7 @@ function cambiarOrden(data) {
                         </a>
 
                     </span>
-                    <p id="cal-css">Calificación: ${data[i].calificacion}
+                    <p id="cal-css">Calificación: ${data[i].calificacion.toFixed(2)}
                     </p>
                 </div>
                 <p> Creador:
@@ -68,12 +68,23 @@ function cambiarOrden(data) {
 
 function sortByProperty(property) {
     return function (a, b) {
-        if (a[property] > b[property])
-            return 1;
-        else if (a[property] < b[property])
-            return -1;
+        if (property == "calificacion") {
+            if (a[property] > b[property])
+                return -1;
+            else if (a[property] < b[property])
+                return 1;
 
-        return 0;
+            return 0;
+        }
+        else {
+            if (a[property].toLowerCase() > b[property].toLowerCase())
+                return 1;
+            else if (a[property].toLowerCase() < b[property].toLowerCase())
+                return -1;
+
+            return 0;
+        }
+
     }
 }
 $(".boton-busqueda").on('click', function (e) {
@@ -84,6 +95,6 @@ $(".boton-busqueda").on('click', function (e) {
 $("#orden-drop").change(function (e) {
     e.preventDefault()
     let orden = $("#orden-drop").val().trim()
-    console.log("orden: "+orden)
+    console.log("orden: " + orden)
     cambiarOrden(listaJuegos.sort(sortByProperty(orden)))
 })

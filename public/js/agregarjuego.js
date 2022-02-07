@@ -14,5 +14,7 @@ $("#agregar-juego").on('click', function (e) {
         .then(function (data) {
 
         })
-    window.location.href = "/";
+    var timer = setTimeout(function () {
+        window.location.href = "/";
+    }, 500);
 })

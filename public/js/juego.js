@@ -10,5 +10,8 @@ $("#agregar-comentario").on('click', function (e) {
         .then(function (data) {
 
         })
-        window.location.href = "/juego/"+document.getElementsByName('titulo-juego')[0].id;
+    var timer = setTimeout(function () {
+        window.location.href = "/juego/" + document.getElementsByName('titulo-juego')[0].id;
+    }, 500);
+
 })

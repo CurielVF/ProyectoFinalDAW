@@ -30,7 +30,7 @@
             </div>
             <button id="guardar-cambios" type="submit" class="btn btn-primary btn-sm">Guardar cambios</button>
         </form>
-        <h3>Juegos del creador:</h3>
+        <h3>Tus juegos:</h3>
         <% if(juegos.length !=0) {%>
             <table class="juegos-creador">
                 <% for(var i=0; i < juegos.length; i++) { %>
@@ -45,7 +45,7 @@
                                         </a>
 
                                     </span>
-                                    <p id="cal-css">Calificación: <%= juegos[i].calificacion %>
+                                    <p id="cal-css">Calificación: <%= juegos[i].calificacion.toFixed(2) %>
                                     </p>
                                 </div>
                                 <%= juegos[i].descripcion %>

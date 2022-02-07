@@ -7,7 +7,7 @@ let verify = require('../middleware/verifyAccess')
 router.get("/",verify, async (req, res) => {
     console.log(req.body)
     console.log(req.userId)
-    let juegos = await Juego.find().sort({ nombre: 1 })
+    let juegos = await Juego.find().sort({ calificacion: -1 })
     res.render("pages/index", { juegos })
 })
 
@@ -35,12 +35,12 @@ router.get("/api/juegos/:orden", async (req, res) => {
 });
 
 router.get("/api/juegos", async (req, res) => {
-    let juegos = await Juego.find().sort({ nombre: 1 })
+    let juegos = await Juego.find().sort({ orden: -1 })
     return res.json(juegos);
 });
 
 
-router.get("/logoff",(req,res)=>{
+router.get("/logoff",verify,(req,res)=>{
     res.clearCookie("token")
     res.redirect("/login")
 })

@@ -20,9 +20,9 @@
             <div class="drop-orden" id="ordenarpor">
                 <label>Ordenar por: </label>
                 <select id="orden-drop">
+                    <option value="calificacion">Calificación</option>
                     <option value="nombre">Nombre</option>
                     <option value="creador">Creador</option>
-                    <option value="calificacion">Calificación</option>
                 </select>
             </div>
         </div>
@@ -42,7 +42,7 @@
                                         </a>
 
                                     </span>
-                                    <p id="cal-css">Calificación: <%= juegos[i].calificacion %>
+                                    <p id="cal-css">Calificación: <%= juegos[i].calificacion.toFixed(2) %>
                                     </p>
                                 </div>
                                 <p> Creador:

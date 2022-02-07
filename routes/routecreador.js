@@ -6,7 +6,6 @@ let verify = require('../middleware/verifyAccess')
 
 router.get("/:id",verify, async (req, res) => {
     let juegos = await Juego.find({ creadorId: req.params.id })
-        .sort({ nombre: 1 })
     let creadores = await Creador.find()
     for (let i = 0; i < creadores.length; i++) {
         if (creadores[i]._id == req.params.id) {
