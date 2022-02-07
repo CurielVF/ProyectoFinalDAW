@@ -27,6 +27,7 @@ function consultaApiBusqueda() {
 function cambiarOrden(data) {
     $(".juegos-creador").empty()
     listaJuegos = data
+    $("#aviso-disponible2").hide()
     $("#aviso-disponible").show()
     if (data.length == 0) {
         $("#aviso-disponible").show()
