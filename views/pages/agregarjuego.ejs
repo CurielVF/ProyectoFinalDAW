@@ -51,25 +51,8 @@
         </form>
     </main>
 
-    <script type="text/javascript">
-        $("#agregar-juego").on('click', function (e) {
-            e.preventDefault()
-            var newJuego = {
-                nombre: $("#inputNombre").val().trim(),
-                descripcion: $("#inputDescripcion").val().trim(),
-                clasificacion: $("#inputClasificacion").val().trim(),
-                imagen: $("#inputImage").val().trim()=="" ? "https://images4.alphacoders.com/100/thumb-350-1008904.png" : $("#inputImage").val().trim() ,
-                categoria: $("#inputCategoria").val().trim(),
-                descarga: $("#inputDescarga").val().trim(),
-                fecha: $("#inputFecha").val().trim()
-            }
-            console.log(newJuego)
-            $.post("/agregarjuego/api", newJuego)
-                .then(function (data) {
-
-                })
-            window.location.href = "/";
-        })
-    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="./js/agregarjuego.js"></script>
 
     <%- include('../template/footer')-%>

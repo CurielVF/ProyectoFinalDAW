@@ -5,115 +5,100 @@
         </h1>
 
         <img id="img-juego" src=<%=imagen %> class="imagen-creador" >
-            <div class="datos-juego">
-                <p>
-                    <span>Creador: </span>
-                    <a href="/creador/<%= creadorId %>">
-                        <%= creador %>
-                    </a>
-                </p>
-                <p>
-                    <span>Calificación: </span>
-                    <%= calificacion %>
-                </p>
-                <p>
-                    <span>Descripción: </span>
-                    <%= descripcion %>
-                </p>
-                <p>
-                    <span>Clasificación: </span>
-                    <%= clasificacion %>
-                </p>
-                <p>
-                    <span>Categoría: </span>
-                    <%= categoria %>
-                </p>
-                <p>
-                    <span>Link de descarga: </span>
-                    <a href="<%= descarga %>">
-                        <%= descarga %>
-                    </a>
-                </p>
-                <p>
-                    <span>Fecha de creación: </span>
-                    <%= fecha.getDate() + "/" + (fecha.getMonth()+1 )+ "/" +fecha.getFullYear(); %>
-                </p>
-                <p>
-                    <span>Comentarios:</span>
-                    <div class="form-group col-md-4"  style="margin-left: 0%; padding-left:0%;">
-                        <div>
-                            <form id="drop-cal" role="form">
-                                <div class="calificacion">
-                                    <label>Calificación: </label>
-                                    <select id="calificacion-comentario">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
-                                </div>
+        <div class="datos-juego">
+            <p>
+                <span>Creador: </span>
+                <a href="/creador/<%= creadorId %>">
+                    <%= creador %>
+                </a>
+            </p>
+            <p>
+                <span>Calificación: </span>
+                <%= calificacion %>
+            </p>
+            <p>
+                <span>Descripción: </span>
+                <%= descripcion %>
+            </p>
+            <p>
+                <span>Clasificación: </span>
+                <%= clasificacion %>
+            </p>
+            <p>
+                <span>Categoría: </span>
+                <%= categoria %>
+            </p>
+            <p>
+                <span>Link de descarga: </span>
+                <a href="<%= descarga %>">
+                    <%= descarga %>
+                </a>
+            </p>
+            <p>
+                <span>Fecha de creación: </span>
+                <%= fecha.getDate() + "/" + (fecha.getMonth()+1 )+ "/" +fecha.getFullYear(); %>
+            </p>
+            <p>
+                <span>Comentarios:</span>
+            <div class="form-group col-md-4" style="margin-left: 0%; padding-left:0%;">
+                <div>
+                    <form id="drop-cal" role="form">
+                        <div class="calificacion">
+                            <label>Calificación: </label>
+                            <select id="calificacion-comentario">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
                         </div>
-                
-                        <input id="inputComentarios" type="text" class="form-control" id="inputComentarios"
-                            placeholder="Super Buen juego">
-                
-                        <a href="/">
-                            <button id="agregar-comentario" type="submit" class="btn btn-primary btn-sm">Publicar</button>
-                        </a>
-                        </form>
-                    </div>
-                    <% if(comentarios.length !=0){ %>
-                        <table class="comentarios-juego">
-                            <% for(var i=0; i < comentarios.length; i++) { %>
-                                <tr>
-                                    <td class="fila-juego">
-                                        <div class="datos-juego">
-                                            <div class="clasificacion-juego">
-                                                <span>
-                                                    <a href="/creador/<%= comentarios[i].creadorId %>">
-                                                        <%= comentarios[i].creadorId %>
-                                                    </a>
-                                                    <p>
-                                                        <%= comentarios[i].comentario %>
-                                                    </p>
-                                                    <p>
-                                                        <%= comentarios[i].calificacion %>
-                                                    </p>
-                                            </div>
-                                    </td>
-                                </tr>
-                                <% } %>
-                        </table>
-                        <% }else{%>
-                            <h2>No hay comentarios</h2>
-                            <% }%>
-                </p>
+                </div>
 
+                <input id="inputComentarios" type="text" class="form-control" id="inputComentarios"
+                    placeholder="Super Buen juego">
+
+                <a href="/">
+                    <button id="agregar-comentario" type="submit" class="btn btn-primary btn-sm">Publicar</button>
+                </a>
+                </form>
             </div>
+            <% if(comentarios.length !=0){ %>
+                <table class="comentarios-juego">
+                    <% for(var i=0; i < comentarios.length; i++) { %>
+                        <tr>
+                            <td class="fila-juego">
+                                <div class="datos-juego">
+                                    <div class="clasificacion-juego">
+                                        <span>
+                                            <a href="/creador/<%= comentarios[i].creadorId %>">
+                                                <%= comentarios[i].creadorId %>
+                                            </a>
+                                            <p>
+                                                <%= comentarios[i].comentario %>
+                                            </p>
+                                            <p>
+                                                <%= comentarios[i].calificacion %>
+                                            </p>
+                                    </div>
+                            </td>
+                        </tr>
+                        <% } %>
+                </table>
+                <% }else{%>
+                    <h2>No hay comentarios</h2>
+                    <% }%>
+                        </p>
+
+        </div>
 
     </main>
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="./js/clickable.js"></script>
 
-    
-
-    <script type="text/javascript">
-        $("#agregar-comentario").on('click', function (e) {
-            e.preventDefault()
-            var newComentario = {
-                idJuego: document.getElementsByName('titulo-juego')[0].id,
-                comentario: $("#inputComentarios").val().trim(),
-                calificacion: $("#calificacion-comentario").val().trim()
-            }
-
-            $.post("juego/api/comentario", newComentario)
-                .then(function (data) {
-
-                })
-                window.location.href = "/juego/"+document.getElementsByName('titulo-juego')[0].id;
-        })
-    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="./js/juego.js"></script>
 
     <%- include('../template/footer')-%>

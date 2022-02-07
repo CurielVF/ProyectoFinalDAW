@@ -5,11 +5,12 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputEmail4">Nombre</label>
-                    <input id="inputNombre" class="form-control"  placeholder="Nombre" value="<%= juego.nombre %> ">
+                    <input id="inputNombre" class="form-control" placeholder="Nombre" value="<%= juego.nombre %> ">
                 </div>
                 <div class="form-group">
                     <label for="inputState">Fecha de creacion</label>
-                    <input type="date" id="inputFecha" name="fecha" min="2000-01-01" max="2022-03-01" value="<%= juego.fecha.toISOString().substr(0, 10) %>"/>
+                    <input type="date" id="inputFecha" name="fecha" min="2000-01-01" max="2022-03-01"
+                        value="<%= juego.fecha.toISOString().substr(0, 10) %>" />
                 </div>
 
             </div>
@@ -33,8 +34,10 @@
             </div>
             <div class="form-group col-md-4">
                 <label for="inputCategoria">Categoria</label>
-                <select id="inputCategoria" class="form-control" >
-                    <option selected hidden><%= juego.categoria %></option>
+                <select id="inputCategoria" class="form-control">
+                    <option selected hidden>
+                        <%= juego.categoria %>
+                    </option>
                     <option>....</option>
                     <option>Accion</option>
                     <option>Arcade</option>
@@ -53,26 +56,9 @@
         </form>
     </main>
 
-    <script type="text/javascript">
-        $("#modificar-juego").on('click', function (e) {
-            e.preventDefault()
-            console.log("funcionando")
-            var newJuego = {
-                nombre: $("#inputNombre").val().trim(),
-                descripcion: $("#inputDescripcion").val().trim(),
-                clasificacion: $("#inputClasificacion").val().trim(),
-                imagen: $("#inputImage").val().trim()=="" ? "https://images4.alphacoders.com/100/thumb-350-1008904.png" : $("#inputImage").val().trim() ,
-                categoria: $("#inputCategoria").val().trim(),
-                descarga: $("#inputDescarga").val().trim(),
-                fecha: $("#inputFecha").val().trim()
-            }
-            console.log(newJuego)
-            $.post("/modificarjuego/api/"+document.getElementsByName('id-juego')[0].id, newJuego)
-                .then(function (data) {
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="./js/modificarjuego.js"></script>
 
-                })
-            window.location.href = "/perfil";
-        })
-    </script>
 
     <%- include('../template/footer')-%>
