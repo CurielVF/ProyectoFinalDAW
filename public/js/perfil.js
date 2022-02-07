@@ -10,7 +10,7 @@ $("#guardar-cambios").on('click', function (e) {
     console.log("funcionando")
     var perfil = {
         nombre: $("#inputNombre").val().trim(),
-        imagen: $("#inputImage").val().trim() == "" ? "https://images4.alphacoders.com/100/thumb-350-1008904.png" : $("#inputImage").val().trim(),
+        imagen: $("#inputImage").val().trim(),
         sitio: $("#inputSitio").val().trim(),
         telefono: $("#inputTelefono").val().trim(),
         correo: $("#inputCorreo").val().trim()
