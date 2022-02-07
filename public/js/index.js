@@ -39,7 +39,7 @@ function cambiarOrden(data) {
         $(".juegos-creador").append(`
         <tr class="clickable-row">
         <td class="fila-juego">
-            <img src=${data[i].imagen} class="imagen-juego" onerror="this.src='https://thumbs.dreamstime.com/b/seamless-bright-vector-pattern-joysticks-video-game-controller-gaming-cool-print-boys-girls-textiles-sportswear-212032349.jpg';">
+            <img src='${data[i].imagen}' class="imagen-juego" onerror="this.src='https://thumbs.dreamstime.com/b/seamless-bright-vector-pattern-joysticks-video-game-controller-gaming-cool-print-boys-girls-textiles-sportswear-212032349.jpg';">
             <div class="datos-juego">
                 <div class="clasificacion-juego">
                     <span>

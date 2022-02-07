@@ -199,6 +199,9 @@ span{
     font-weight: bold;
 }
  
+.datos-creador li{
+    list-style-type: none;
+}
           
         /* Media Query for Mobile Devices */ 
         @media (max-width: 480px) { 
