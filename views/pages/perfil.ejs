@@ -67,7 +67,7 @@
             <% }else{ %>
                 <h3>No se encontraron juegos disponibles</h3>
                 <% } %>
-                    <a href="/login">
+                    <a href="/logoff">
                         <button class="cerrar-sesion btn-danger">Cerrar Sesión</button>
                     </a>
                     <div id="<%= _id %>" name="id-perfil"></div>
@@ -96,7 +96,7 @@
                 correo: $("#inputCorreo").val().trim()
             }
             console.log(perfil)
-            $.post("/perfil/api/modificarperfil/" + document.getElementsByName('id-perfil')[0].id, perfil)
+            $.post("/perfil/api/modificarperfil", perfil)
                 .then(function (data) {
 
                 })

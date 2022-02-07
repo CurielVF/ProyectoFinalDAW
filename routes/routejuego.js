@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express();
 const Juego = require('../model/juego');
+let verify = require('../middleware/verifyAccess')
 
-router.get("/:id", async (req, res) => {
+router.get("/:id",verify, async (req, res) => {
     let juegos = await Juego.find()
 
     for (let i = 0; i < juegos.length; i++) {
@@ -14,12 +15,14 @@ router.get("/:id", async (req, res) => {
     }
 })
 
-router.post("/api/comentario", async (req, res) => {
+router.post("/api/comentario",verify, async (req, res) => {
     let idJuego = req.body.idJuego
+    let idUsuario = req.userId
+
     let juego = await Juego.findById(idJuego)
     let newComentario = {
-        creadorId: req.body.creadorId,
-        nombreCreador: req.body.nombreCreador,
+        creadorId: idUsuario,
+        nombreCreador: idUsuario,
         comentario: req.body.comentario,
         calificacion: parseInt(req.body.calificacion)
     }
@@ -35,7 +38,6 @@ router.post("/api/comentario", async (req, res) => {
     juego.comentarios = comentarios
     juego.calificacion = calificacion
     await juego.save()
-    
 })
 
 module.exports = router;

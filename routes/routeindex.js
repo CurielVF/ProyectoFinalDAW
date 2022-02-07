@@ -2,10 +2,11 @@ const express = require('express');
 const router = express();
 const Creador = require('../model/creador');
 const Juego = require('../model/juego');
+let verify = require('../middleware/verifyAccess')
 
-router.get("/", async (req, res) => {
+router.get("/",verify, async (req, res) => {
     console.log(req.body)
-
+    console.log(req.userId)
     let juegos = await Juego.find().sort({ nombre: 1 })
     res.render("pages/index", { juegos })
 })
@@ -39,7 +40,10 @@ router.get("/api/juegos", async (req, res) => {
 });
 
 
-
+router.get("/logoff",(req,res)=>{
+    res.clearCookie("token")
+    res.redirect("/login")
+})
 //Ejemplo para añadir datos a base ----------------------------------
 router.get("/addDB", async (req, res) => {
     /*

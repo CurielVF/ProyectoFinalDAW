@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express();
+let verify = require('../middleware/verifyAccess')
 
-router.get("/", async (req, res) => {
+router.get("/",verify, async (req, res) => {
     res.render("pages/acercade")
 })
 
