@@ -32,7 +32,8 @@
                 <% for(var i=0; i < juegos.length; i++) { %>
                     <tr class="clickable-row">
                         <td class="fila-juego">
-                            <img src=<%=juegos[i].imagen %> class="imagen-juego" onerror="this.src='https://thumbs.dreamstime.com/b/seamless-bright-vector-pattern-joysticks-video-game-controller-gaming-cool-print-boys-girls-textiles-sportswear-212032349.jpg';">
+                            <img src=<%=juegos[i].imagen %> class="imagen-juego"
+                            onerror="this.src='https://thumbs.dreamstime.com/b/seamless-bright-vector-pattern-joysticks-video-game-controller-gaming-cool-print-boys-girls-textiles-sportswear-212032349.jpg';">
                             <div class="datos-juego">
                                 <div class="clasificacion-juego">
                                     <span>
@@ -56,9 +57,8 @@
                     </tr>
                     <% } %>
             </table>
-            <% }else{%>
-                <h2>No se encontraron juegos disponibles</h2>
-                <% }%>
+            <% }%>
+                <h2 id="aviso-disponible">No se encontraron juegos disponibles</h2>
     </main>
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
@@ -67,5 +67,5 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="./js/index.js"></script>
-    
+
     <%- include('../template/footer')-%>

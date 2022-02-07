@@ -2,6 +2,7 @@ const express = require('express');
 const router = express();
 const Juego = require('../model/juego');
 let verify = require('../middleware/verifyAccess')
+const Creador = require('../model/creador');
 
 router.get("/:id",verify, async (req, res) => {
     let juegos = await Juego.find()
@@ -20,9 +21,10 @@ router.post("/api/comentario",verify, async (req, res) => {
     let idUsuario = req.userId
 
     let juego = await Juego.findById(idJuego)
+    let creador = await Creador.findById(idUsuario)
     let newComentario = {
         creadorId: idUsuario,
-        nombreCreador: idUsuario,
+        nombreCreador: creador.nombre,
         comentario: req.body.comentario,
         calificacion: parseInt(req.body.calificacion)
     }

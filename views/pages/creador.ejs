@@ -8,24 +8,22 @@
         <div class="datos-creador">
             <p>
                 <span>Sitio web: </span>
-                <a href=<%=sitio %>>
-                    <%= sitio %>
+                <a href=<%=sitio!=null ? sitio : "" %>>
+                    <%= sitio!=null ? sitio : "-" %>
                 </a>
             </p>
             <p>
                 <span>Correo electrónico: </span>
-                <%= correo %>
+                <%= correo!=null ? correo : "-" %>
             </p>
             <p>
                 <span>Teléfono: </span>
-                <%= telefono %>
-            </p>
-            <p>
-                <span>Calificación: </span>0
+                <%= telefono!=null ? telefono : "-" %>
             </p>
         </div>
 
         <h3>Juegos del creador:</h3>
+        <% if(juegos.length !=0) {%>
         <table class="juegos-creador">
             <% for(var i=0; i < juegos.length; i++) { %>
                 <tr class="clickable-row">
@@ -48,6 +46,9 @@
                 </tr>
                 <% } %>
         </table>
+        <% }else{ %>
+            <h3>No se encontraron juegos disponibles</h3>
+            <% } %>
     </main>
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>

@@ -195,7 +195,9 @@ footer li{
     display: block;
 }
 
-
+span{
+    font-weight: bold;
+}
  
           
         /* Media Query for Mobile Devices */ 

@@ -3,6 +3,8 @@ $.get("/api/juegos", function (data) {
     listaJuegos = data
 })
 
+$("#aviso-disponible").hide()
+
 function consultaApiBusqueda() {
     var buscarPor = $("#busqueda-drop").val().trim()
     var orden = $("#orden-drop").val().trim()
@@ -25,6 +27,14 @@ function consultaApiBusqueda() {
 function cambiarOrden(data) {
     $(".juegos-creador").empty()
     listaJuegos = data
+    $("#aviso-disponible").show()
+    if(data.length==0){
+        $("#aviso-disponible").show()
+    }
+    else{
+        $("#aviso-disponible").hide()
+    }
+
     for (var i = 0; i < data.length; i++) {
         $(".juegos-creador").append(`
         <tr class="clickable-row">
@@ -74,6 +84,6 @@ $(".boton-busqueda").on('click', function (e) {
 $("#orden-drop").change(function (e) {
     e.preventDefault()
     let orden = $("#orden-drop").val().trim()
-    console.log("funcion")
+    console.log("orden: "+orden)
     cambiarOrden(listaJuegos.sort(sortByProperty(orden)))
 })
