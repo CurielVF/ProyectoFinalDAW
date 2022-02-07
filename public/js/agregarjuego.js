@@ -4,7 +4,7 @@ $("#agregar-juego").on('click', function (e) {
         nombre: $("#inputNombre").val().trim(),
         descripcion: $("#inputDescripcion").val().trim(),
         clasificacion: $("#inputClasificacion").val().trim(),
-        imagen: $("#inputImage").val().trim() == "" ? "https://images4.alphacoders.com/100/thumb-350-1008904.png" : $("#inputImage").val().trim(),
+        imagen: $("#inputImage").val().trim(),
         categoria: $("#inputCategoria").val().trim(),
         descarga: $("#inputDescarga").val().trim(),
         fecha: $("#inputFecha").val().trim()

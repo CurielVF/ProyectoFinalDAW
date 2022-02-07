@@ -27,32 +27,30 @@ function cambiarOrden(data) {
     listaJuegos = data
     for (var i = 0; i < data.length; i++) {
         $(".juegos-creador").append(`
-                <tr class="clickable-row">
-                        <td class="fila-juego">
-                            <img src=${data[i].imagen} class="imagen-juego">
-                            <div class="datos-juego">
-                                <div class="clasificacion-juego">
-                                    <span>
-                                        <a href="/juego/${data[i]._id}">
-                                            ${data[i].nombre}
-                                        </a>
+        <tr class="clickable-row">
+        <td class="fila-juego">
+            <img src=${data[i].imagen} class="imagen-juego" onerror="this.src='https://thumbs.dreamstime.com/b/seamless-bright-vector-pattern-joysticks-video-game-controller-gaming-cool-print-boys-girls-textiles-sportswear-212032349.jpg';">
+            <div class="datos-juego">
+                <div class="clasificacion-juego">
+                    <span>
+                        <a href="/juego/${data[i]._id}">
+                        ${data[i].nombre}
+                        </a>
 
-                                    </span>
-                                    <p>Calificación: ${data[i].calificacion}</p>
-                                </div>
-                                <p> Creador:
-                                    <a href="/creador/${data[i].creadorId}">
-                                        ${data[i].creador}
-                                    </a>
-                                </p>
-                                
-                                ${data[i].descripcion}
-                            </div>
-                        </td>
-                    </tr>
+                    </span>
+                    <p id="cal-css">Calificación: ${data[i].calificacion}
+                    </p>
+                </div>
+                <p> Creador:
+                    <a href="/creador/${data[i].creadorId}">
+                    ${data[i].creador}
+                    </a>
+                </p>
 
-
-
+                ${data[i].descripcion}
+            </div>
+        </td>
+    </tr>
                         `
         )
     }

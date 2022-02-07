@@ -4,7 +4,7 @@
             <%= nombre %>
         </h1>
 
-        <img src=<%=imagen %> class="imagen-creador">
+        <img src=<%=imagen %> class="imagen-creador" onerror="this.src='https://www.shoptiu.com/upload/users/user-avatar.png';">
         <div class="datos-creador">
             <p>
                 <span>Sitio web: </span>
@@ -29,17 +29,18 @@
         <table class="juegos-creador">
             <% for(var i=0; i < juegos.length; i++) { %>
                 <tr class="clickable-row">
-                    <td>
-                        <img src=<%=juegos[i].imagen %> class="imagen-juego">
+                    <td class="fila-juego">
+                        <img src=<%=juegos[i].imagen %> class="imagen-juego" onerror="this.src='https://thumbs.dreamstime.com/b/seamless-bright-vector-pattern-joysticks-video-game-controller-gaming-cool-print-boys-girls-textiles-sportswear-212032349.jpg';">
                         <div class="datos-juego">
                             <div class="clasificacion-juego">
                                 <span>
-                                    <a class="nombre-css" href="/juego/<%= juegos[i]._id %>">
+                                    <a href="/juego/<%= juegos[i]._id %>">
                                         <%= juegos[i].nombre %>
                                     </a>
-                                    
+
                                 </span>
-                                <p>Calificación: 5</p>
+                                <p id="cal-css">Calificación: <%= juegos[i].calificacion %>
+                                </p>
                             </div>
                             <%= juegos[i].descripcion %>
                         </div>
