@@ -53,44 +53,46 @@
                                 <option value="5">5</option>
                             </select>
                         </div>
+
+                
+                        <input id="inputComentarios" type="text" class="form-control" id="inputComentarios"
+                            placeholder="Comenta lo que piensas...">
+                
+                        <a href="/">
+                            <button id="agregar-comentario" type="submit" class="btn btn-primary btn-sm">Publicar</button>
+                        </a>
+                        </form>
+                    </div>
+                    <% if(comentarios.length !=0){ %>
+                        <table class="comentarios-juego">
+                            <% for(var i=0; i < comentarios.length; i++) { %>
+                                <tr>
+                                    <td class="fila-juego">
+                                        <div id="comentario-ind" class="datos-juego">
+                                            <div class="clasificacion-juego">
+                                                <span>
+                                                    <a href="/creador/<%= comentarios[i].creadorId %>">
+                                                        <%= comentarios[i].creadorId %>
+                                                    </a>
+                                                    <p>
+                                                        <%= comentarios[i].comentario %>
+                                                    </p>
+                                                    <p>
+                                                        <%= comentarios[i].calificacion %>
+                                                    </p>
+                                            </div>
+                                    </td>
+                                </tr>
+                                <% } %>
+                        </table>
+                        <% }else{%>
+                            <h2>No hay comentarios</h2>
+                            <% }%>
+                </p>
+
                 </div>
 
-                <input id="inputComentarios" type="text" class="form-control" id="inputComentarios"
-                    placeholder="Comenta lo que pienses...">
 
-                <a href="/">
-                    <button id="agregar-comentario" type="submit" class="btn btn-primary btn-sm">Publicar</button>
-                </a>
-                </form>
-            </div>
-            <% if(comentarios.length !=0){ %>
-                <table class="comentarios-juego">
-                    <% for(var i=0; i < comentarios.length; i++) { %>
-                        <tr>
-                            <td class="fila-juego">
-                                <div class="datos-juego">
-                                    <div class="clasificacion-juego">
-                                        <span>
-                                            <a href="/creador/<%= comentarios[i].creadorId %>">
-                                                <%= comentarios[i].nombreCreador %>
-                                            </a>
-                                            <p>
-                                                <%= comentarios[i].comentario %>
-                                            </p>
-                                            <p>
-                                                <%= comentarios[i].calificacion %>
-                                            </p>
-                                    </div>
-                            </td>
-                        </tr>
-                        <% } %>
-                </table>
-                <% }else{%>
-                    <h2>No hay comentarios</h2>
-                    <% }%>
-                        </p>
-
-        </div>
 
     </main>
     <script src="https://code.jquery.com/jquery-3.4.1.js"
