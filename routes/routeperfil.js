@@ -2,31 +2,34 @@ const express = require('express');
 const router = express();
 const Creador = require('../model/creador');
 const Juego = require('../model/juego');
+let verify = require('../middleware/verifyAccess')
 
-router.get("/", async (req, res) => {
-    let juegos = await Juego.find({ creadorId: "Thatgamecompany" })
+router.get("/",verify, async (req, res) => {
+    let id = req.userId
+    let juegos = await Juego.find({ creadorId: id })
         .sort({ nombre: 1 })
     let creadores = await Creador.find()
     for (let i = 0; i < creadores.length; i++) {
-        if (creadores[i]._id === "Thatgamecompany") {
+        if (creadores[i]._id == id) {
             creadores[i]['juegos'] = juegos;
             res.render("pages/perfil", creadores[i])
         }
     }
 })
 
-router.get("/borrarjuego/:id", async (req, res) => {
+router.get("/borrarjuego/:id",verify, async (req, res) => {
     let id = req.params.id
     await Juego.remove({ _id: id })
     res.redirect('/perfil')
 })
 
-router.post("/api/modificarperfil/:id", async (req, res) => {
-    await Creador.updateOne({_id:req.params.id},req.body) 
+router.post("/api/modificarperfil",verify, async (req, res) => {
+    let id = req.userId
+    await Creador.updateOne({_id:id},req.body) 
     var newJuego = {
         creador: req.body.nombre
     }
-    await Juego.updateMany({creadorId:req.params.id},newJuego) 
+    await Juego.updateMany({creadorId:id},newJuego) 
 })
 
 module.exports = router;
