@@ -81,6 +81,11 @@ h1, h2, h3 {
 .clasificacion-juego {
     display: flex;
     justify-content: space-between;
+    
+}
+ #comentario-ind{
+    background-color: #F8F8F8;
+    border-left: 3px solid #CCC;
 }
 
 .datos-juego {
