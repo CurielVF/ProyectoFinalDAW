@@ -9,7 +9,7 @@
                 <label for="inputNombre">Nombre</label>
                 <input id="inputNombre" class="form-control" placeholder="Nombre" value="<%= nombre %> ">
             </div>
-            <img src=<%=imagen %> class="imagen-creador">
+            <img src='<%=imagen %>' class="imagen-creador" onerror="this.src='https://www.shoptiu.com/upload/users/user-avatar.png';">
             <div class="form-group">
                 <label for="inputImage">Foto de perfil</label>
                 <input id="inputImage" type="text" class="form-control" value="<%= imagen %> ">
@@ -30,13 +30,13 @@
             </div>
             <button id="guardar-cambios" type="submit" class="btn btn-primary btn-sm">Guardar cambios</button>
         </form>
-        <h3>Juegos del creador:</h3>
+        <h3>Tus juegos:</h3>
         <% if(juegos.length !=0) {%>
             <table class="juegos-creador">
                 <% for(var i=0; i < juegos.length; i++) { %>
                     <tr class="clickable-row">
                         <td class="fila-juego">
-                            <img src=<%=juegos[i].imagen %> class="imagen-juego">
+                            <img src='<%=juegos[i].imagen %>' class="imagen-juego" onerror="this.src='https://thumbs.dreamstime.com/b/seamless-bright-vector-pattern-joysticks-video-game-controller-gaming-cool-print-boys-girls-textiles-sportswear-212032349.jpg';">
                             <div class="datos-juego">
                                 <div class="clasificacion-juego">
                                     <span>
@@ -45,7 +45,8 @@
                                         </a>
 
                                     </span>
-                                    <p>Calificación: 5</p>
+                                    <p id="cal-css">Calificación: <%= juegos[i].calificacion.toFixed(2) %>
+                                    </p>
                                 </div>
                                 <%= juegos[i].descripcion %>
                             </div>
@@ -77,31 +78,8 @@
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="./js/clickable.js"></script>
 
-    <script type="text/javascript">
-        function eliminarjuego(id, nombre) {
-            var answer = window.confirm("¿Estas seguro de eliminar el juego \"" + nombre + "\"?");
-            if (answer) {
-                window.location.href = "perfil/borrarjuego/" + id
-            }
-        }
-
-        $("#guardar-cambios").on('click', function (e) {
-            e.preventDefault()
-            console.log("funcionando")
-            var perfil = {
-                nombre: $("#inputNombre").val().trim(),
-                imagen: $("#inputImage").val().trim() == "" ? "https://images4.alphacoders.com/100/thumb-350-1008904.png" : $("#inputImage").val().trim(),
-                sitio: $("#inputSitio").val().trim(),
-                telefono: $("#inputTelefono").val().trim(),
-                correo: $("#inputCorreo").val().trim()
-            }
-            console.log(perfil)
-            $.post("/perfil/api/modificarperfil", perfil)
-                .then(function (data) {
-
-                })
-            window.location.href = "/perfil";
-        })
-
-    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="./js/perfil.js"></script>
+    
     <%- include('../template/footer')-%>

@@ -4,42 +4,41 @@
             <%= nombre %>
         </h1>
 
-        <img src=<%=imagen %> class="imagen-creador">
+        <img src='<%=imagen %>' class="imagen-creador" onerror="this.src='https://www.shoptiu.com/upload/users/user-avatar.png';">
         <div class="datos-creador">
             <p>
                 <span>Sitio web: </span>
-                <a href=<%=sitio %>>
-                    <%= sitio %>
+                <a href=<%=sitio!=null ? sitio : "" %>>
+                    <%= sitio!=null ? sitio : "-" %>
                 </a>
             </p>
             <p>
                 <span>Correo electrónico: </span>
-                <%= correo %>
+                <%= correo!=null ? correo : "-" %>
             </p>
             <p>
                 <span>Teléfono: </span>
-                <%= telefono %>
-            </p>
-            <p>
-                <span>Calificación: </span>0
+                <%= telefono!=null ? telefono : "-" %>
             </p>
         </div>
 
         <h3>Juegos del creador:</h3>
+        <% if(juegos.length !=0) {%>
         <table class="juegos-creador">
             <% for(var i=0; i < juegos.length; i++) { %>
                 <tr class="clickable-row">
-                    <td>
-                        <img src=<%=juegos[i].imagen %> class="imagen-juego">
+                    <td class="fila-juego">
+                        <img src='<%=juegos[i].imagen %>' class="imagen-juego" onerror="this.src='https://thumbs.dreamstime.com/b/seamless-bright-vector-pattern-joysticks-video-game-controller-gaming-cool-print-boys-girls-textiles-sportswear-212032349.jpg';">
                         <div class="datos-juego">
                             <div class="clasificacion-juego">
                                 <span>
-                                    <a class="nombre-css" href="/juego/<%= juegos[i]._id %>">
+                                    <a href="/juego/<%= juegos[i]._id %>">
                                         <%= juegos[i].nombre %>
                                     </a>
-                                    
+
                                 </span>
-                                <p>Calificación: 5</p>
+                                <p id="cal-css">Calificación: <%= juegos[i].calificacion.toFixed(2) %>
+                                </p>
                             </div>
                             <%= juegos[i].descripcion %>
                         </div>
@@ -47,6 +46,9 @@
                 </tr>
                 <% } %>
         </table>
+        <% }else{ %>
+            <h3>No se encontraron juegos disponibles</h3>
+            <% } %>
     </main>
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
