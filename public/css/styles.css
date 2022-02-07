@@ -213,6 +213,20 @@ footer li{
             .datos-juego{
                 font-size: 70%
             }
+            .fila-juego{
+                display:contents
+            }
+
+            .imagen-juego{
+                margin-left: 35%;
+                width: 30%
+                    
+            }
+
+            #cal-css{
+                margin-top: 10%
+            }
+            
         } 
           
         /* Media Query for low resolution  Tablets, Ipads */ 
