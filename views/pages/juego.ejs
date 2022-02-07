@@ -1,10 +1,10 @@
 <%- include('../template/head') -%>
     <main>
-        <h1>
+        <h1 name="titulo-juego" id="<%= _id %>">
             <%= nombre %>
         </h1>
 
-        <img id="img-juego" src=<%=imagen %> class="imagen-creador" name="imagen-juego" id="<%= _id %>">
+        <img id="img-juego" src=<%=imagen %> class="imagen-creador" >
             <div class="datos-juego">
                 <p>
                     <span>Creador: </span>
@@ -103,7 +103,7 @@
         $("#agregar-comentario").on('click', function (e) {
             e.preventDefault()
             var newComentario = {
-                idJuego: document.getElementsByName('imagen-juego')[0].id,
+                idJuego: document.getElementsByName('titulo-juego')[0].id,
                 comentario: $("#inputComentarios").val().trim(),
                 calificacion: $("#calificacion-comentario").val().trim()
             }
@@ -112,7 +112,7 @@
                 .then(function (data) {
 
                 })
-                window.location.href = "/juego/"+document.getElementsByName('imagen-juego')[0].id;
+                window.location.href = "/juego/"+document.getElementsByName('titulo-juego')[0].id;
         })
     </script>
 
